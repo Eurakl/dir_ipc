@@ -34,6 +34,31 @@ main.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_tmr.h
 main.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_cacheAux.h
 main.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_cache.h
 main.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_cgem.h
+main.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_tsc.h
+main.obj: ../inc/KeyStone_common.h
+main.obj: D:/CCSv74/ccsv7/tools/compiler/ti-cgt-c6000_8.0.4/include/c6x.h
+main.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_pllc.h
+main.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_xmc.h
+main.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_cgemAux.h
+main.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_cgem.h
+main.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_bootcfg.h
+main.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_bootcfgAux.h
+main.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_bootcfg.h
+main.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_tpcc.h
+main.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_tptc.h
+main.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_srio.h
+main.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_vusr.h
+main.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_psc.h
+main.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_psc.h
+main.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_xmcAux.h
+main.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_xmc.h
+main.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_msmc.h
+main.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_idma.h
+main.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_mpu.h
+main.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_gpio.h
+main.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_emif4f.h
+main.obj: D:/CCSv74/ccsv7/tools/compiler/ti-cgt-c6000_8.0.4/include/stdio.h
+main.obj: ../inc/DDR3/DDR3_init.h
 
 ../main.c: 
 D:/CCSv74/ccsv7/tools/compiler/ti-cgt-c6000_8.0.4/include/c6x.h: 
@@ -69,3 +94,28 @@ C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_tmr.h:
 C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_cacheAux.h: 
 C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_cache.h: 
 C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_cgem.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_tsc.h: 
+../inc/KeyStone_common.h: 
+D:/CCSv74/ccsv7/tools/compiler/ti-cgt-c6000_8.0.4/include/c6x.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_pllc.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_xmc.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_cgemAux.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_cgem.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_bootcfg.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_bootcfgAux.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_bootcfg.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_tpcc.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_tptc.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_srio.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_vusr.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_psc.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_psc.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_xmcAux.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_xmc.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_msmc.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_idma.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_mpu.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_gpio.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_emif4f.h: 
+D:/CCSv74/ccsv7/tools/compiler/ti-cgt-c6000_8.0.4/include/stdio.h: 
+../inc/DDR3/DDR3_init.h: 

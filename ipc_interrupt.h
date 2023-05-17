@@ -17,13 +17,19 @@
 #include <ti/csl/csl_chip.h>
 #include <ti/csl/src/intc/csl_intc.h>
 #include <ti/csl/csl_cacheAux.h>
+#include <ti/csl/csl_tsc.h>
+#include "inc/KeyStone_common.h"
+#include "inc/DDR3/DDR3_init.h"
+#include <ti/csl/csl_xmc.h>
+#include <ti/csl/csl_xmcAux.h>
 
-
+#define DDR_TEST_START_ARRD     (0x80000000)
 
 #define MAX_CORE_NUM 8
 #define CORENUM 8
 #define MAX_SYSTEM_VECTOR 8
 #define MAX_CORE_VECTOR 8
+#define TEST 0
 
 #define IPCGR0 0x02620240
 #define IPCGR1 0x02620244
@@ -67,16 +73,16 @@ typedef struct IPC_PKT_TEST
     uint32_t type;
 }IPC_PKT_TEST;
 
-//#pragma DATA_SECTION(Flag, ".IPC")
 extern volatile unsigned int far Flag;
-
-//#pragma DATA_SECTION(Flag_1, ".IPC")
 extern volatile IPC_PKT_TEST far Pkt_Test;
-
+extern volatile unsigned int far DDR_Test;
 
 int32_t intcInit();
 int32_t registerInterrupt();
-void IssueInterruptToNextCore();
+void IssueInterruptToNextCore(uint32_t destCoreID, uint32_t interruptInfo);
 void IPC_ISR();
+void Test_DDR(unsigned int coreid,unsigned int value,unsigned int modify_DDR);
+void Test_MSMC(unsigned int CoreNum,uint32_t interruptInfo);
+void Init_Core0();
 
 #endif /* IPC_INTERRUPT_H_ */

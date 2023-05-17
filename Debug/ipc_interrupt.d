@@ -1,7 +1,7 @@
 # FIXED
 
 ipc_interrupt.obj: ../ipc_interrupt.c
-ipc_interrupt.obj: ../ipc_interrupt.h
+ipc_interrupt.obj: .././ipc_interrupt.h
 ipc_interrupt.obj: D:/CCSv74/ccsv7/tools/compiler/ti-cgt-c6000_8.0.4/include/stdio.h
 ipc_interrupt.obj: D:/CCSv74/ccsv7/tools/compiler/ti-cgt-c6000_8.0.4/include/linkage.h
 ipc_interrupt.obj: D:/CCSv74/ccsv7/tools/compiler/ti-cgt-c6000_8.0.4/include/stdarg.h
@@ -29,9 +29,34 @@ ipc_interrupt.obj: D:/CCSv74/ccsv7/tools/compiler/ti-cgt-c6000_8.0.4/include/c6x
 ipc_interrupt.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_cacheAux.h
 ipc_interrupt.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_cache.h
 ipc_interrupt.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_cgem.h
+ipc_interrupt.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_tsc.h
+ipc_interrupt.obj: .././inc/KeyStone_common.h
+ipc_interrupt.obj: D:/CCSv74/ccsv7/tools/compiler/ti-cgt-c6000_8.0.4/include/c6x.h
+ipc_interrupt.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_pllc.h
+ipc_interrupt.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_xmc.h
+ipc_interrupt.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_cgemAux.h
+ipc_interrupt.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_cgem.h
+ipc_interrupt.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_bootcfg.h
+ipc_interrupt.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_bootcfgAux.h
+ipc_interrupt.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_bootcfg.h
+ipc_interrupt.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_tpcc.h
+ipc_interrupt.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_tptc.h
+ipc_interrupt.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_srio.h
+ipc_interrupt.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_vusr.h
+ipc_interrupt.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_psc.h
+ipc_interrupt.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_psc.h
+ipc_interrupt.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_xmcAux.h
+ipc_interrupt.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_xmc.h
+ipc_interrupt.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_msmc.h
+ipc_interrupt.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_idma.h
+ipc_interrupt.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_mpu.h
+ipc_interrupt.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_gpio.h
+ipc_interrupt.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_emif4f.h
+ipc_interrupt.obj: D:/CCSv74/ccsv7/tools/compiler/ti-cgt-c6000_8.0.4/include/stdio.h
+ipc_interrupt.obj: .././inc/DDR3/DDR3_init.h
 
 ../ipc_interrupt.c: 
-../ipc_interrupt.h: 
+.././ipc_interrupt.h: 
 D:/CCSv74/ccsv7/tools/compiler/ti-cgt-c6000_8.0.4/include/stdio.h: 
 D:/CCSv74/ccsv7/tools/compiler/ti-cgt-c6000_8.0.4/include/linkage.h: 
 D:/CCSv74/ccsv7/tools/compiler/ti-cgt-c6000_8.0.4/include/stdarg.h: 
@@ -59,3 +84,28 @@ D:/CCSv74/ccsv7/tools/compiler/ti-cgt-c6000_8.0.4/include/c6x.h:
 C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_cacheAux.h: 
 C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_cache.h: 
 C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_cgem.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_tsc.h: 
+.././inc/KeyStone_common.h: 
+D:/CCSv74/ccsv7/tools/compiler/ti-cgt-c6000_8.0.4/include/c6x.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_pllc.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_xmc.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_cgemAux.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_cgem.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_bootcfg.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_bootcfgAux.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_bootcfg.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_tpcc.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_tptc.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_srio.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_vusr.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_psc.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_psc.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_xmcAux.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_xmc.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_msmc.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_idma.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_mpu.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_gpio.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_emif4f.h: 
+D:/CCSv74/ccsv7/tools/compiler/ti-cgt-c6000_8.0.4/include/stdio.h: 
+.././inc/DDR3/DDR3_init.h: 

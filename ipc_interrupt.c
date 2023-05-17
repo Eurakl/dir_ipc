@@ -4,12 +4,7 @@
  *  Created on: 2022年5月18日
  *      Author: 乔
  */
-#include "ipc_interrupt.h"
-
-
-//extern volatile uint32_t sync_flag; // 声明 sync_flag
-//extern volatile uint32_t Flag;
-
+#include "./ipc_interrupt.h"
 
 CSL_IntcGlobalEnableState state;    //使能
 CSL_IntcContext context;     //上下文
@@ -149,11 +144,6 @@ int32_t registerInterrupt()
 // BOOT and CONFIG dsp system modules Definitions
 #define CHIP_LEVEL_REG  0x02620000
 // Boot cfg registers
-#define KICK0           *(unsigned int*)(CHIP_LEVEL_REG + 0x0038)
-#define KICK1           *(unsigned int*)(CHIP_LEVEL_REG + 0x003C)
-#define KICK0_UNLOCK (0x83E70B13)
-#define KICK1_UNLOCK (0x95A4F1E0)
-#define KICK_LOCK    0
 
 void IssueInterruptToNextCore(uint32_t destCoreID, uint32_t interruptInfo)
 {
@@ -166,19 +156,14 @@ void IssueInterruptToNextCore(uint32_t destCoreID, uint32_t interruptInfo)
 //   iNextCore = (CoreNum + 1)%8; //
    printf("Set interrupt from Core %x to Core %d, cycle = %d\n", CoreNum, (CoreNum+1), TSCL);
 
-//   interruptInfo +=16;
     // Unlock Config
-    KICK0 = KICK0_UNLOCK;
-    KICK1 = KICK1_UNLOCK;
-
+   CSL_BootCfgUnlockKicker();
     //向下一个核发送信息 ipc中断由两个寄存器ipcGR（生成核的中断）和IPCAR（确认）两个寄存器组成
    *(volatile uint32_t *) iIPCGRInfo[destCoreID] = interruptInfo;
     //使能
    *(volatile uint32_t *) iIPCGRInfo[destCoreID] |= 1;
     // lock Config
-    KICK0 = KICK_LOCK;
-    KICK1 = KICK_LOCK;
-//   printf("Interrupt Info %d\n", interruptInfo);
+   CSL_BootCfgLockKicker();
 }
 
 
@@ -186,113 +171,65 @@ void IPC_ISR()
 {
     volatile uint32_t read_ipcgr,read_ipcar;
     uint32_t CoreNum;
-    uint32_t iPrevCore;
+    uint32_t value;
     CoreNum = CSL_chipReadReg (CSL_CHIP_DNUM);
-
-    iPrevCore = (CoreNum - 1) % 8;
     //当前核接收到的信息
     read_ipcgr = *(volatile Uint32 *) iIPCGRInfo[CoreNum];
-
     read_ipcar = *(volatile Uint32 *) iIPCARInfo[CoreNum];
     //清除SRCS位
     *(volatile uint32_t *) iIPCARInfo[CoreNum] = read_ipcgr; //clear the related source info
-
-    printf("Receive interrupt from Core %d 0x%x with info 0x%x, cycle = %d\n", iPrevCore, read_ipcar,read_ipcgr, TSCL);
-
-//    read_ipcgr = read_ipcgr<<1;
+    printf("Receive interrupt from Core %d 0x%x with info 0x%x, cycle = %d\n", (CoreNum - 1) % 8, read_ipcar,read_ipcgr, TSCL);
     // 更新Flag的值
     switch(read_ipcar)
     {
         case(IPC_INFO0_SUF):
         {
-            Flag += 5;
-            printf("test ipc pkt src:%d dst:%d pkt_type:%d\n",Pkt_Test.src,Pkt_Test.dst,Pkt_Test.type);
-            Pkt_Test.src=1;
-            Pkt_Test.dst=2;
-            Pkt_Test.type=2;
-            printf("Flag=%d, core%d receive signal from core%d with address %p\n",Flag, CoreNum, (CoreNum - 1),&Flag);
-            CACHE_wbInvL2((void *)&Flag, sizeof(Flag), CACHE_WAIT); // Add this line to write back and invalidate the L2 cache.
-            CACHE_wbInvL2((void *)&Pkt_Test, sizeof(Pkt_Test), CACHE_WAIT);
-            IssueInterruptToNextCore((CoreNum+1),IPC_INFO1_SUF);
+            value = 0x00000000;
+            Test_DDR(CoreNum,value,0x11111111);
+            Test_MSMC(CoreNum,IPC_INFO1_SUF);
             break;
         }
         case(IPC_INFO1_SUF):
         {
-            Flag += 5;
-            printf("test ipc pkt src:%d dst:%d pkt_type:%d\n",Pkt_Test.src,Pkt_Test.dst,Pkt_Test.type);
-            Pkt_Test.src=2;
-            Pkt_Test.dst=3;
-            Pkt_Test.type=2;
-            printf("Flag=%d, core%d receive signal from core%d with address %p\n",Flag, CoreNum, (CoreNum - 1),&Flag);
-            CACHE_wbInvL2((void *)&Flag, sizeof(Flag), CACHE_WAIT); // Add this line to write back and invalidate the L2 cache.
-            CACHE_wbInvL2((void *)&Pkt_Test, sizeof(Pkt_Test), CACHE_WAIT);
-            IssueInterruptToNextCore((CoreNum+1),IPC_INFO2_SUF);
+            value = 0x11111111;
+            Test_DDR(CoreNum,value,0x22222222);
+            Test_MSMC(CoreNum,IPC_INFO2_SUF);
             break;
         }
         case(IPC_INFO2_SUF):
         {
-            Flag += 5;
-            printf("test ipc pkt src:%d dst:%d pkt_type:%d\n",Pkt_Test.src,Pkt_Test.dst,Pkt_Test.type);
-            Pkt_Test.src=3;
-            Pkt_Test.dst=4;
-            Pkt_Test.type=2;
-            printf("Flag=%d, core%d receive signal from core%d with address %p\n",Flag, CoreNum, (CoreNum - 1),&Flag);
-            CACHE_wbInvL2((void *)&Flag, sizeof(Flag), CACHE_WAIT); // Add this line to write back and invalidate the L2 cache.
-            CACHE_wbInvL2((void *)&Pkt_Test, sizeof(Pkt_Test), CACHE_WAIT);
-            IssueInterruptToNextCore((CoreNum+1),IPC_INFO3_SUF);
+            value = 0x22222222;
+            Test_DDR(CoreNum,value,0x33333333);
+            Test_MSMC(CoreNum,IPC_INFO3_SUF);
             break;
         }
         case(IPC_INFO3_SUF):
         {
-            Flag += 5;
-            printf("test ipc pkt src:%d dst:%d pkt_type:%d\n",Pkt_Test.src,Pkt_Test.dst,Pkt_Test.type);
-            Pkt_Test.src=4;
-            Pkt_Test.dst=5;
-            Pkt_Test.type=2;
-            printf("Flag=%d, core%d receive signal from core%d with address %p\n",Flag, CoreNum, (CoreNum - 1),&Flag);
-            CACHE_wbInvL2((void *)&Flag, sizeof(Flag), CACHE_WAIT); // Add this line to write back and invalidate the L2 cache.
-            CACHE_wbInvL2((void *)&Pkt_Test, sizeof(Pkt_Test), CACHE_WAIT);
-            IssueInterruptToNextCore((CoreNum+1),IPC_INFO4_SUF);
+            value = 0x33333333;
+            Test_DDR(CoreNum,value,0x44444444);
+            Test_MSMC(CoreNum,IPC_INFO4_SUF);
             break;
         }
         case(IPC_INFO4_SUF):
         {
-            Flag += 5;
-            printf("test ipc pkt src:%d dst:%d pkt_type:%d\n",Pkt_Test.src,Pkt_Test.dst,Pkt_Test.type);
-            Pkt_Test.src=5;
-            Pkt_Test.dst=6;
-            Pkt_Test.type=2;
-            printf("Flag=%d, core%d receive signal from core%d with address %p\n",Flag, CoreNum, (CoreNum - 1),&Flag);
-            CACHE_wbInvL2((void *)&Flag, sizeof(Flag), CACHE_WAIT); // Add this line to write back and invalidate the L2 cache.
-            CACHE_wbInvL2((void *)&Pkt_Test, sizeof(Pkt_Test), CACHE_WAIT);
-            IssueInterruptToNextCore((CoreNum+1),IPC_INFO5_SUF);
+            value = 0x44444444;
+            Test_DDR(CoreNum,value,0x55555555);
+            Test_MSMC(CoreNum,IPC_INFO5_SUF);
             break;
         }
         case(IPC_INFO5_SUF):
         {
-            Flag += 5;
-            printf("test ipc pkt src:%d dst:%d pkt_type:%d\n",Pkt_Test.src,Pkt_Test.dst,Pkt_Test.type);
-            Pkt_Test.src=6;
-            Pkt_Test.dst=7;
-            Pkt_Test.type=2;
-            printf("Flag=%d, core%d receive signal from core%d with address %p\n",Flag, CoreNum, (CoreNum - 1),&Flag);
-            CACHE_wbInvL2((void *)&Flag, sizeof(Flag), CACHE_WAIT); // Add this line to write back and invalidate the L2 cache.
-            CACHE_wbInvL2((void *)&Pkt_Test, sizeof(Pkt_Test), CACHE_WAIT);
-            IssueInterruptToNextCore((CoreNum+1),IPC_INFO6_SUF);
+            value = 0x55555555;
+            Test_DDR(CoreNum,value,0x66666666);
+            Test_MSMC(CoreNum,IPC_INFO6_SUF);
             break;
         }
         case(IPC_INFO6_SUF):
         {
-            Flag += 5;
-            printf("test ipc pkt src:%d dst:%d pkt_type:%d\n",Pkt_Test.src,Pkt_Test.dst,Pkt_Test.type);
-            Pkt_Test.src=6;
-            Pkt_Test.dst=7;
-            Pkt_Test.type=2;
-            printf("Flag=%d, core%d receive signal from core%d with address %p\n",Flag, CoreNum, (CoreNum - 1),&Flag);
-            CACHE_wbInvL2((void *)&Flag, sizeof(Flag), CACHE_WAIT); // Add this line to write back and invalidate the L2 cache.
-            CACHE_wbInvL2((void *)&Pkt_Test, sizeof(Pkt_Test), CACHE_WAIT);
+            value = 0x66666666;
+            Test_DDR(CoreNum,value,0x77777777);
+            Test_MSMC(CoreNum,IPC_INFO7_SUF);
             printf("test end\n");
-//            IssueInterruptToNextCore((CoreNum+1),IPC_INFO6_SUF);
             break;
         }
 
@@ -305,7 +242,54 @@ void IPC_ISR()
     }
 
 }
+void Test_DDR(unsigned int coreid,unsigned int value,unsigned int modify_DDR)
+{
+    if(value != DDR_Test)
+    {
+        printf("coreid %d Test_DDR fail DDR_Test:%x value: %x\n",coreid,DDR_Test,value);
+    }
+    else
+    {
+        printf("coreid %d Test_DDR success\n",coreid);
+    }
+    DDR_Test = modify_DDR;
+}
 
+void Test_MSMC(unsigned int CoreNum,uint32_t interruptInfo)
+{
+    Flag += 5;
+    Pkt_Test.src+=1;
+    Pkt_Test.dst+=1;
+    Pkt_Test.type=2;
+    if(TEST)
+    {
+        printf("test ipc pkt src:%d dst:%d pkt_type:%d\n",Pkt_Test.src,Pkt_Test.dst,Pkt_Test.type);
+        printf("Flag=%d, core%d receive signal from core%d with address %p\n",Flag, CoreNum, (CoreNum - 1),&Flag);
+    }
+    // Add this line to write back and invalidate the L2 cache.
+    CACHE_wbInvL2((void *)&Flag, sizeof(Flag), CACHE_WAIT);
+    CACHE_wbInvL2((void *)&Pkt_Test, sizeof(Pkt_Test), CACHE_WAIT);
+    if(CoreNum!=7)
+    {
+        IssueInterruptToNextCore((CoreNum+1),interruptInfo);
+    }
+    else
+    {
+        printf("CoreNum %d Test End\n",CoreNum);
+    }
+}
+void Init_Core0()
+{
+    DDR_Test = 0x00000000;
+    Flag=5;
+    Pkt_Test.src=0;
+    Pkt_Test.dst=1;
+    Pkt_Test.type=2;
+    printf("Flag=%d with address %p\n",Flag,&Flag);
+    CACHE_wbInvL2((void *)&Flag, sizeof(Flag), CACHE_WAIT); // Add this line to write back and invalidate the L2 cache.
+    CACHE_wbInvL2((void *)&Pkt_Test, sizeof(Pkt_Test), CACHE_WAIT);
+    IssueInterruptToNextCore(1,IPC_INFO0_SUF);
+}
 
 
 

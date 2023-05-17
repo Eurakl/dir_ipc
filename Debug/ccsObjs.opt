@@ -1,1 +1,1 @@
-"./bootload.obj" "./ipc_interrupt.obj" "./main.obj" "../KeyStone_Test.cmd" -llibc.a -l"C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/lib/ti.csl.ae66" -l"C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/lib/ti.csl.intc.ae66" 
+"./bootload.obj" "./ipc_interrupt.obj" "./main.obj" "./inc/DDR3/DDR3_init.obj" "./inc/KeyStone_common.obj" "../KeyStone_Test.cmd" -llibc.a -l"C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/lib/ti.csl.ae66" -l"C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/lib/ti.csl.intc.ae66" 

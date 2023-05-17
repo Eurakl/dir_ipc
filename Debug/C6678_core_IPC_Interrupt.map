@@ -1,10 +1,10 @@
 ******************************************************************************
                TMS320C6x Linker PC v8.0.4                      
 ******************************************************************************
->> Linked Thu May 11 18:11:49 2023
+>> Linked Wed May 17 15:40:36 2023
 
 OUTPUT FILE NAME:   <C6678_core_IPC_Interrupt.out>
-ENTRY POINT SYMBOL: "_c_int00"  address: 00808960
+ENTRY POINT SYMBOL: "_c_int00"  address: 0080ef00
 
 
 MEMORY CONFIGURATION
@@ -12,7 +12,7 @@ MEMORY CONFIGURATION
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
   BOOT                  00800000   00000400  00000060  000003a0  RW X
-  LL2                   00800400   00080000  0000dce8  00072318  RW X
+  LL2                   00800400   00080000  000162dc  00069d24  RW X
   MSMCSRAM              0c000000   00400000  00000000  00400000  RW X
   DDR3                  80000000   10000000  00000000  10000000  RWIX
 
@@ -23,25 +23,24 @@ run origin  load origin   length   init length attrs members
 ----------  ----------- ---------- ----------- ----- -------
 00800000    00800000    00000060   00000060    r-x
   00800000    00800000    00000060   00000060    r-x .bootload
-00800400    00800400    00008980   00008980    r-x
-  00800400    00800400    00008980   00008980    r-x .text
-00808d80    00808d80    00004aa8   00000000    rw-
-  00808d80    00808d80    00002000   00000000    rw- .stack
-  0080ad80    0080ad80    00002000   00000000    rw- .sysmem
-  0080cd80    0080cd80    000006c8   00000000    rw- .far
-  0080d448    0080d448    000003e0   00000000    rw- .fardata
-0080d828    0080d828    00000304   00000304    r--
-  0080d828    0080d828    00000304   00000304    r-- .const
-0080db30    0080db30    00000120   00000000    rw-
-  0080db30    0080db30    00000120   00000000    rw- .cio
-0080dc50    0080dc50    000000d4   000000d4    r--
-  0080dc50    0080dc50    000000d4   000000d4    r-- .switch
-0080dd24    0080dd24    00000058   00000000    rw-
-  0080dd24    0080dd24    00000058   00000000    rw- .bss
-0080dd80    0080dd80    00000170   00000170    r--
-  0080dd80    0080dd80    00000170   00000170    r-- .cinit
-0080e000    0080e000    00000200   00000200    r-x
-  0080e000    0080e000    00000200   00000200    r-x .csl_vect
+00800400    00800400    0000efa0   0000efa0    r-x
+  00800400    00800400    0000efa0   0000efa0    r-x .text
+0080f3a0    0080f3a0    00004000   00000000    rw-
+  0080f3a0    0080f3a0    00002000   00000000    rw- .stack
+  008113a0    008113a0    00002000   00000000    rw- .sysmem
+008133a0    008133a0    00001da8   00001da8    r--
+  008133a0    008133a0    00001da8   00001da8    r-- .const
+00815148    00815148    00000f00   00000000    rw-
+  00815148    00815148    00000748   00000000    rw- .far
+  00815890    00815890    00000580   00000000    rw- .fardata
+  00815e10    00815e10    00000120   00000000    rw- .cio
+  00815f30    00815f30    000000c0   00000000    rw- .neardata
+  00815ff0    00815ff0    00000058   00000000    rw- .bss
+00816048    00816048    000000d4   000000d4    r--
+  00816048    00816048    000000d4   000000d4    r-- .switch
+00816400    00816400    000005c0   000005c0    r-x
+  00816400    00816400    00000200   00000200    r-x .csl_vect
+  00816600    00816600    000003c0   000003c0    r-- .cinit
 
 
 SECTION ALLOCATION MAP
@@ -53,488 +52,825 @@ section   page    origin      length       input sections
 *          0    00800000    00000060     
                   00800000    00000060     bootload.obj (.bootload)
 
-.text      0    00800400    00008980     
-                  00800400    00000a80     ipc_interrupt.obj (.text)
-                  00800e80    00000600     rts6600_elf.lib : divd.obj (.text:__c6xabi_divd)
-                  00801480    000005a0                     : _printfi.obj (.text:_setfield)
-                  00801a20    00000580                     : _printfi.obj (.text:_getarg_diouxp)
-                  00801fa0    00000460                     : _printfi.obj (.text:__TI_printfi)
-                  00802400    000003c0     ti.csl.intc.ae66 : csl_intcHwControl.oe66 (.text:csl_section:intc:CSL_intcHwControl)
-                  008027c0    00000380     rts6600_elf.lib : fputs.obj (.text:fputs)
-                  00802b40    00000300                     : _printfi.obj (.text:_pproc_fgea)
-                  00802e40    000002c0                     : _printfi.obj (.text:_pproc_fwp)
-                  00803100    000002a0                     : _printfi.obj (.text:ecvt)
-                  008033a0    000002a0                     : memory.obj (.text:free)
-                  00803640    00000280                     : _printfi.obj (.text:fcvt)
-                  008038c0    00000260                     : _printfi.obj (.text:_pconv_e)
-                  00803b20    00000240                     : imath64.obj (.text:__c6xabi_divull)
-                  00803d60    00000240                     : _printfi.obj (.text:_pproc_diouxp)
-                  00803fa0    00000240                     : _printfi.obj (.text:_pproc_str)
-                  008041e0    00000240                     : _printfi.obj (.text:acvt)
-                  00804420    00000240                     : setvbuf.obj (.text:setvbuf)
-                  00804660    00000220     ti.csl.intc.ae66 : csl_intcOpen.oe66 (.text:csl_section:intc:CSL_intcOpen)
-                  00804880    00000220                      : _csl_intcCombEventDispatcher.oe66 (.text:csl_section:intc:_CSL_intcEvent0Dispatcher)
-                  00804aa0    00000220                      : _csl_intcCombEventDispatcher.oe66 (.text:csl_section:intc:_CSL_intcEvent1Dispatcher)
-                  00804cc0    00000220                      : _csl_intcCombEventDispatcher.oe66 (.text:csl_section:intc:_CSL_intcEvent2Dispatcher)
-                  00804ee0    00000220                      : _csl_intcCombEventDispatcher.oe66 (.text:csl_section:intc:_CSL_intcEvent3Dispatcher)
-                  00805100    00000220     rts6600_elf.lib : fputc.obj (.text:fputc)
-                  00805320    00000200                     : _printfi.obj (.text:_pconv_g)
-                  00805520    000001e0                     : imath40.obj (.text:__c6xabi_divul)
-                  00805700    000001e0     ti.csl.intc.ae66 : _csl_intcDispatcher.oe66 (.text:csl_section:intc:_CSL_intcDispatcher)
-                  008058e0    000001a0     rts6600_elf.lib : trgdrv.obj (.text:HOSTrename)
-                  00805a80    000001a0                     : _printfi.obj (.text:_pconv_a)
-                  00805c20    000001a0                     : frexp.obj (.text:frexp)
-                  00805dc0    00000180     main.obj (.text)
-                  00805f40    00000180     rts6600_elf.lib : memory.obj (.text:malloc)
-                  008060c0    00000160                     : copy_decompress_rle.obj (.text:__TI_decompress_rle_core)
-                  00806220    00000160                     : _printfi.obj (.text:_mcpy)
-                  00806380    00000140     ti.csl.ae66 : csl_chip.oe66 (.text:CSL_chipReadReg)
-                  008064c0    00000140     rts6600_elf.lib : fclose.obj (.text:__TI_closefile)
-                  00806600    00000140                     : autoinit.obj (.text:_auto_init_elf)
-                  00806740    00000140     ti.csl.intc.ae66 : csl_intcInit.oe66 (.text:csl_section:intc:CSL_intcInit)
-                  00806880    00000140                      : _csl_intcIntrEnDisRes.oe66 (.text:csl_section:intc)
-                  008069c0    00000140     rts6600_elf.lib : lowlev.obj (.text:getdevice)
-                  00806b00    00000140                     : ldexp.obj (.text:ldexp)
-                  00806c40    00000120                     : fseek.obj (.text:fseek)
-                  00806d60    00000100                     : trgdrv.obj (.text:HOSTlseek)
-                  00806e60    00000100                     : _io_perm.obj (.text:__TI_wrt_ok)
-                  00806f60    00000100                     : _printfi.obj (.text:_ltostr)
-                  00807060    00000100                     : _printfi.obj (.text:_pproc_fflags)
-                  00807160    00000100                     : atoi.obj (.text:atoi)
-                  00807260    00000100                     : cpy_tbl.obj (.text:copy_in)
-                  00807360    000000e0                     : trgdrv.obj (.text:HOSTopen)
-                  00807440    000000e0                     : trgdrv.obj (.text:HOSTwrite)
-                  00807520    000000e0                     : _printfi.obj (.text:_div)
-                  00807600    000000e0                     : lowlev.obj (.text:close)
-                  008076e0    000000e0                     : copy_zero_init.obj (.text:decompress:ZI:__TI_zero_init)
-                  008077c0    000000e0                     : ltoa.obj (.text:ltoa)
-                  008078a0    000000e0                     : memset.obj (.text:memset)
-                  00807980    000000e0                     : printf.obj (.text:printf)
-                  00807a60    000000c0                     : trgdrv.obj (.text:HOSTread)
-                  00807b20    000000c0                     : trgdrv.obj (.text:HOSTunlink)
-                  00807be0    000000c0                     : fflush.obj (.text:__TI_doflush)
-                  00807ca0    000000c0                     : divu.obj (.text:__divu)
-                  00807d60    000000c0                     : _printfi.obj (.text:_ecpy)
-                  00807e20    000000c0     ti.csl.intc.ae66 : csl_intcPlugEventHandler.oe66 (.text:csl_section:intc:CSL_intcPlugEventHandler)
-                  00807ee0    000000c0     rts6600_elf.lib : exit.obj (.text:exit)
-                  00807fa0    000000c0                     : memory.obj (.text:minsert)
-                  00808060    000000c0                     : memory.obj (.text:mremove)
-                  00808120    000000c0                     : tls.obj (.text:tls:init:__TI_tls_init)
-                  008081e0    000000a0                     : trgdrv.obj (.text:HOSTclose)
-                  00808280    000000a0                     : fopen.obj (.text:__TI_cleanup)
-                  00808320    000000a0                     : _printfi.obj (.text:_fcpy)
-                  008083c0    000000a0                     : memory.obj (.text:_minit)
-                  00808460    000000a0                     : _printfi.obj (.text:_pconv_f)
-                  00808500    000000a0                     : memcpy64.obj (.text:memcpy)
-                  008085a0    00000080                     : trgmsg.obj (.text:__TI_readmsg)
-                  00808620    00000080                     : trgmsg.obj (.text:__TI_writemsg)
-                  008086a0    00000080                     : llshift.obj (.text:__c6xabi_llshl)
-                  00808720    00000080                     : lowlev.obj (.text:finddevice)
-                  008087a0    00000080                     : _printfi.obj (.text:incr_hex)
-                  00808820    00000080                     : lowlev.obj (.text:unlink)
-                  008088a0    00000060                     : frcmpyd_div.obj (.text:__TI_frcmpyd_div)
-                  00808900    00000060                     : llshift.obj (.text:__c6xabi_llshru)
-                  00808960    00000060                     : boot.obj (.text:_c_int00)
-                  008089c0    00000060                     : imath64.obj (.text:_subcull)
-                  00808a20    00000060                     : lowlev.obj (.text:lseek)
-                  00808a80    00000060                     : memccpy.obj (.text:memccpy)
-                  00808ae0    00000060                     : _printfi.obj (.text:val_hex)
-                  00808b40    00000060                     : lowlev.obj (.text:write)
-                  00808ba0    00000040                     : isinf.obj (.text:__c6xabi_isinf)
-                  00808be0    00000040                     : _printfi.obj (.text:__c6xabi_isnan)
-                  00808c20    00000040                     : args_main.obj (.text:_args_main)
-                  00808c60    00000020                     : errno.obj (.text:__c6xabi_errno_addr)
-                  00808c80    00000020                     : _lock.obj (.text:_nop)
-                  00808ca0    00000020                     : printf.obj (.text:_outc)
-                  00808cc0    00000020                     : printf.obj (.text:_outs)
-                  00808ce0    00000020                     : exit.obj (.text:abort)
-                  00808d00    00000020     ti.csl.intc.ae66 : csl_intcHookIsr.oe66 (.text:csl_section:intc:CSL_intcHookIsr)
-                  00808d20    00000020                      : _csl_intcNmiDummy.oe66 (.text:csl_section:intc)
-                  00808d40    00000020     rts6600_elf.lib : copy_decompress_none.obj (.text:decompress:none:__TI_decompress_none)
-                  00808d60    00000020                     : copy_decompress_rle.obj (.text:decompress:rle24:__TI_decompress_rle24)
+.text      0    00800400    0000efa0     
+                  00800400    00005a00     KeyStone_common.obj (.text)
+                  00805e00    000007a0     ipc_interrupt.obj (.text)
+                  008065a0    00000600     rts6600_elf.lib : divd.obj (.text:__c6xabi_divd)
+                  00806ba0    000005a0                     : _printfi.obj (.text:_setfield)
+                  00807140    00000580                     : _printfi.obj (.text:_getarg_diouxp)
+                  008076c0    000004c0     KeyStone_common.obj (.text:retain)
+                  00807b80    00000480     DDR3_init.obj (.text)
+                  00808000    00000460     rts6600_elf.lib : _printfi.obj (.text:__TI_printfi)
+                  00808460    00000420     KeyStone_common.obj (.text:Core_MPAX)
+                  00808880    000003c0     ti.csl.intc.ae66 : csl_intcHwControl.oe66 (.text:csl_section:intc:CSL_intcHwControl)
+                  00808c40    00000380     rts6600_elf.lib : fputs.obj (.text:fputs)
+                  00808fc0    00000300                     : _printfi.obj (.text:_pproc_fgea)
+                  008092c0    000002c0                     : _printfi.obj (.text:_pproc_fwp)
+                  00809580    000002a0                     : _printfi.obj (.text:ecvt)
+                  00809820    000002a0                     : memory.obj (.text:free)
+                  00809ac0    00000280                     : divf.obj (.text:__c6xabi_divf)
+                  00809d40    00000280                     : _printfi.obj (.text:fcvt)
+                  00809fc0    00000260                     : _printfi.obj (.text:_pconv_e)
+                  0080a220    00000240                     : imath64.obj (.text:__c6xabi_divull)
+                  0080a460    00000240                     : _printfi.obj (.text:_pproc_diouxp)
+                  0080a6a0    00000240                     : _printfi.obj (.text:_pproc_str)
+                  0080a8e0    00000240                     : _printfi.obj (.text:acvt)
+                  0080ab20    00000240                     : setvbuf.obj (.text:setvbuf)
+                  0080ad60    00000220     ti.csl.intc.ae66 : csl_intcOpen.oe66 (.text:csl_section:intc:CSL_intcOpen)
+                  0080af80    00000220                      : _csl_intcCombEventDispatcher.oe66 (.text:csl_section:intc:_CSL_intcEvent0Dispatcher)
+                  0080b1a0    00000220                      : _csl_intcCombEventDispatcher.oe66 (.text:csl_section:intc:_CSL_intcEvent1Dispatcher)
+                  0080b3c0    00000220                      : _csl_intcCombEventDispatcher.oe66 (.text:csl_section:intc:_CSL_intcEvent2Dispatcher)
+                  0080b5e0    00000220                      : _csl_intcCombEventDispatcher.oe66 (.text:csl_section:intc:_CSL_intcEvent3Dispatcher)
+                  0080b800    00000220     rts6600_elf.lib : fputc.obj (.text:fputc)
+                  0080ba20    00000200                     : _printfi.obj (.text:_pconv_g)
+                  0080bc20    000001e0                     : imath40.obj (.text:__c6xabi_divul)
+                  0080be00    000001e0     ti.csl.intc.ae66 : _csl_intcDispatcher.oe66 (.text:csl_section:intc:_CSL_intcDispatcher)
+                  0080bfe0    000001a0     rts6600_elf.lib : trgdrv.obj (.text:HOSTrename)
+                  0080c180    000001a0                     : _printfi.obj (.text:_pconv_a)
+                  0080c320    000001a0                     : frexp.obj (.text:frexp)
+                  0080c4c0    00000180                     : memory.obj (.text:malloc)
+                  0080c640    00000160                     : copy_decompress_rle.obj (.text:__TI_decompress_rle_core)
+                  0080c7a0    00000160                     : _printfi.obj (.text:_mcpy)
+                  0080c900    00000140     ti.csl.ae66 : csl_chip.oe66 (.text:CSL_chipReadReg)
+                  0080ca40    00000140     rts6600_elf.lib : fclose.obj (.text:__TI_closefile)
+                  0080cb80    00000140                     : autoinit.obj (.text:_auto_init_elf)
+                  0080ccc0    00000140     ti.csl.intc.ae66 : csl_intcInit.oe66 (.text:csl_section:intc:CSL_intcInit)
+                  0080ce00    00000140                      : _csl_intcIntrEnDisRes.oe66 (.text:csl_section:intc)
+                  0080cf40    00000140     rts6600_elf.lib : lowlev.obj (.text:getdevice)
+                  0080d080    00000140                     : ldexp.obj (.text:ldexp)
+                  0080d1c0    00000120                     : fseek.obj (.text:fseek)
+                  0080d2e0    00000100                     : trgdrv.obj (.text:HOSTlseek)
+                  0080d3e0    00000100                     : _io_perm.obj (.text:__TI_wrt_ok)
+                  0080d4e0    00000100                     : _printfi.obj (.text:_ltostr)
+                  0080d5e0    00000100                     : _printfi.obj (.text:_pproc_fflags)
+                  0080d6e0    00000100                     : atoi.obj (.text:atoi)
+                  0080d7e0    00000100                     : cpy_tbl.obj (.text:copy_in)
+                  0080d8e0    000000e0                     : trgdrv.obj (.text:HOSTopen)
+                  0080d9c0    000000e0                     : trgdrv.obj (.text:HOSTwrite)
+                  0080daa0    000000e0                     : _printfi.obj (.text:_div)
+                  0080db80    000000e0                     : lowlev.obj (.text:close)
+                  0080dc60    000000e0                     : ltoa.obj (.text:ltoa)
+                  0080dd40    000000e0                     : memset.obj (.text:memset)
+                  0080de20    000000e0                     : printf.obj (.text:printf)
+                  0080df00    000000c0                     : trgdrv.obj (.text:HOSTread)
+                  0080dfc0    000000c0                     : trgdrv.obj (.text:HOSTunlink)
+                  0080e080    000000c0                     : fflush.obj (.text:__TI_doflush)
+                  0080e140    000000c0                     : divu.obj (.text:__divu)
+                  0080e200    000000c0                     : _printfi.obj (.text:_ecpy)
+                  0080e2c0    000000c0     ti.csl.intc.ae66 : csl_intcPlugEventHandler.oe66 (.text:csl_section:intc:CSL_intcPlugEventHandler)
+                  0080e380    000000c0     rts6600_elf.lib : exit.obj (.text:exit)
+                  0080e440    000000c0                     : memory.obj (.text:minsert)
+                  0080e500    000000c0                     : memory.obj (.text:mremove)
+                  0080e5c0    000000c0                     : tls.obj (.text:tls:init:__TI_tls_init)
+                  0080e680    000000a0                     : trgdrv.obj (.text:HOSTclose)
+                  0080e720    000000a0                     : fopen.obj (.text:__TI_cleanup)
+                  0080e7c0    000000a0                     : _printfi.obj (.text:_fcpy)
+                  0080e860    000000a0                     : memory.obj (.text:_minit)
+                  0080e900    000000a0                     : _printfi.obj (.text:_pconv_f)
+                  0080e9a0    000000a0                     : memcpy64.obj (.text:memcpy)
+                  0080ea40    00000080                     : trgmsg.obj (.text:__TI_readmsg)
+                  0080eac0    00000080                     : trgmsg.obj (.text:__TI_writemsg)
+                  0080eb40    00000080                     : fixfu.obj (.text:__c6xabi_fixfu)
+                  0080ebc0    00000080                     : llshift.obj (.text:__c6xabi_llshl)
+                  0080ec40    00000080                     : lowlev.obj (.text:finddevice)
+                  0080ecc0    00000080                     : _printfi.obj (.text:incr_hex)
+                  0080ed40    00000080     main.obj (.text)
+                  0080edc0    00000080     rts6600_elf.lib : lowlev.obj (.text:unlink)
+                  0080ee40    00000060                     : frcmpyd_div.obj (.text:__TI_frcmpyd_div)
+                  0080eea0    00000060                     : llshift.obj (.text:__c6xabi_llshru)
+                  0080ef00    00000060                     : boot.obj (.text:_c_int00)
+                  0080ef60    00000060                     : imath64.obj (.text:_subcull)
+                  0080efc0    00000060                     : lowlev.obj (.text:lseek)
+                  0080f020    00000060                     : memccpy.obj (.text:memccpy)
+                  0080f080    00000060                     : _printfi.obj (.text:val_hex)
+                  0080f0e0    00000060                     : lowlev.obj (.text:write)
+                  0080f140    00000040                     : isinf.obj (.text:__c6xabi_isinf)
+                  0080f180    00000040                     : _printfi.obj (.text:__c6xabi_isnan)
+                  0080f1c0    00000040                     : strasg.obj (.text:__strasgi_64plus)
+                  0080f200    00000040                     : args_main.obj (.text:_args_main)
+                  0080f240    00000040                     : fputs.obj (.text:puts)
+                  0080f280    00000020                     : errno.obj (.text:__c6xabi_errno_addr)
+                  0080f2a0    00000020                     : _lock.obj (.text:_nop)
+                  0080f2c0    00000020                     : printf.obj (.text:_outc)
+                  0080f2e0    00000020                     : printf.obj (.text:_outs)
+                  0080f300    00000020                     : exit.obj (.text:abort)
+                  0080f320    00000020     ti.csl.intc.ae66 : csl_intcHookIsr.oe66 (.text:csl_section:intc:CSL_intcHookIsr)
+                  0080f340    00000020                      : _csl_intcNmiDummy.oe66 (.text:csl_section:intc)
+                  0080f360    00000020     rts6600_elf.lib : copy_decompress_none.obj (.text:decompress:none:__TI_decompress_none)
+                  0080f380    00000020                     : copy_decompress_rle.obj (.text:decompress:rle24:__TI_decompress_rle24)
 
-.stack     0    00808d80    00002000     UNINITIALIZED
-                  00808d80    00000008     rts6600_elf.lib : boot.obj (.stack)
-                  00808d88    00001ff8     --HOLE--
+.stack     0    0080f3a0    00002000     UNINITIALIZED
+                  0080f3a0    00000008     rts6600_elf.lib : boot.obj (.stack)
+                  0080f3a8    00001ff8     --HOLE--
 
-.sysmem    0    0080ad80    00002000     UNINITIALIZED
-                  0080ad80    00000008     rts6600_elf.lib : memory.obj (.sysmem)
-                  0080ad88    00001ff8     --HOLE--
+.sysmem    0    008113a0    00002000     UNINITIALIZED
+                  008113a0    00000008     rts6600_elf.lib : memory.obj (.sysmem)
+                  008113a8    00001ff8     --HOLE--
 
-.far       0    0080cd80    000006c8     UNINITIALIZED
-                  0080cd80    00000400     (.common:Record)
-                  0080d180    00000140     (.common:__TI_tmpnams)
-                  0080d2c0    00000098     (.common:context)
-                  0080d358    00000080     (.common:intcObj)
-                  0080d3d8    00000040     (.common:hintc)
-                  0080d418    00000020     (.common:coreVector)
-                  0080d438    00000008     (.common:EventRecord)
-                  0080d440    00000008     (.common:parmbuf)
+.const     0    008133a0    00001da8     
+                  008133a0    00001a30     KeyStone_common.obj (.const:.string)
+                  00814dd0    000001d4     ipc_interrupt.obj (.const:.string)
+                  00814fa4    00000004     rts6600_elf.lib : fputs.obj (.const:.string)
+                  00814fa8    00000101                     : ctype.obj (.const:.string:_ctypes_)
+                  008150a9    00000003     --HOLE-- [fill = 0]
+                  008150ac    00000078     DDR3_init.obj (.const:.string)
+                  00815124    00000024     rts6600_elf.lib : _printfi.obj (.const:.string)
 
-.fardata   0    0080d448    000003e0     UNINITIALIZED
-                  0080d448    000001e0     rts6600_elf.lib : defs.obj (.fardata:_ftable)
-                  0080d628    000000a0                     : lowlev.obj (.fardata:_stream)
-                  0080d6c8    00000080     ipc_interrupt.obj (.fardata:intInfo)
-                  0080d748    00000078     rts6600_elf.lib : lowlev.obj (.fardata:_device)
-                  0080d7c0    00000020     ipc_interrupt.obj (.fardata:iIPCARInfo)
-                  0080d7e0    00000020     ipc_interrupt.obj (.fardata:iIPCGRInfo)
-                  0080d800    0000000c     rts6600_elf.lib : exit.obj (.fardata)
-                  0080d80c    0000000c                     : memory.obj (.fardata)
-                  0080d818    00000004                     : _lock.obj (.fardata:_lock)
-                  0080d81c    00000004                     : _lock.obj (.fardata:_unlock)
-                  0080d820    00000004                     : defs.obj (.fardata)
-                  0080d824    00000004                     : errno.obj (.fardata)
+.far       0    00815148    00000748     UNINITIALIZED
+                  00815148    00000400     (.common:Record)
+                  00815548    00000140     (.common:__TI_tmpnams)
+                  00815688    00000098     (.common:context)
+                  00815720    00000080     (.common:intcObj)
+                  008157a0    0000006c     (.common:exception_record)
+                  0081580c    00000004     --HOLE--
+                  00815810    00000040     (.common:hintc)
+                  00815850    00000020     (.common:coreVector)
+                  00815870    00000010     KeyStone_common.obj (.far:Core_MPAX)
+                  00815880    00000008     (.common:EventRecord)
+                  00815888    00000008     (.common:parmbuf)
 
-.const     0    0080d828    00000304     
-                  0080d828    000001c0     ipc_interrupt.obj (.const:.string)
-                  0080d9e8    00000101     rts6600_elf.lib : ctype.obj (.const:.string:_ctypes_)
-                  0080dae9    00000003     --HOLE-- [fill = 0]
-                  0080daec    00000024                     : _printfi.obj (.const:.string)
-                  0080db10    0000001c     main.obj (.const:.string)
+.fardata   0    00815890    00000580     UNINITIALIZED
+                  00815890    000001e0     rts6600_elf.lib : defs.obj (.fardata:_ftable)
+                  00815a70    000000a0                     : lowlev.obj (.fardata:_stream)
+                  00815b10    00000080     ipc_interrupt.obj (.fardata:intInfo)
+                  00815b90    00000078     rts6600_elf.lib : lowlev.obj (.fardata:_device)
+                  00815c08    00000040     KeyStone_common.obj (.fardata:gstruMpuAddrRange)
+                  00815c48    00000028     KeyStone_common.obj (.fardata:gpEDMA_TC_regs)
+                  00815c70    00000024     KeyStone_common.obj (.fardata:gpTimerRegs)
+                  00815c94    00000004     rts6600_elf.lib : _lock.obj (.fardata:_lock)
+                  00815c98    00000024     KeyStone_common.obj (.fardata:input_clk_str)
+                  00815cbc    00000004     rts6600_elf.lib : _lock.obj (.fardata:_unlock)
+                  00815cc0    00000024     KeyStone_common.obj (.fardata:internal_exception_str)
+                  00815ce4    00000004     rts6600_elf.lib : defs.obj (.fardata)
+                  00815ce8    00000020     KeyStone_common.obj (.fardata:boot_mode_str)
+                  00815d08    00000020     KeyStone_common.obj (.fardata:bus_err_stat_str)
+                  00815d28    00000020     KeyStone_common.obj (.fardata:gCIC_EXC_EN_MASK)
+                  00815d48    00000020     KeyStone_common.obj (.fardata:gpMPU_regs)
+                  00815d68    00000020     ipc_interrupt.obj (.fardata:iIPCARInfo)
+                  00815d88    00000020     ipc_interrupt.obj (.fardata:iIPCGRInfo)
+                  00815da8    00000018     KeyStone_common.obj (.fardata:Peri_MPU_err_type_str)
+                  00815dc0    00000014     KeyStone_common.obj (.fardata:device_type_str)
+                  00815dd4    00000004     rts6600_elf.lib : errno.obj (.fardata)
+                  00815dd8    0000000c     KeyStone_common.obj (.fardata:gpEDMA_CC_regs)
+                  00815de4    0000000c     rts6600_elf.lib : exit.obj (.fardata)
+                  00815df0    0000000c                     : memory.obj (.fardata)
+                  00815dfc    00000004     --HOLE--
+                  00815e00    00000008     KeyStone_common.obj (.fardata:Ns_str)
+                  00815e08    00000008     KeyStone_common.obj (.fardata:endian_str)
 
-.cio       0    0080db30    00000120     UNINITIALIZED
-                  0080db30    00000120     rts6600_elf.lib : trgmsg.obj (.cio)
-
-.switch    0    0080dc50    000000d4     
-                  0080dc50    00000070     ti.csl.ae66 : csl_chip.oe66 (.switch:CSL_chipReadReg)
-                  0080dcc0    00000038     rts6600_elf.lib : _printfi.obj (.switch:_pproc_fgea)
-                  0080dcf8    0000001c     ti.csl.intc.ae66 : csl_intcHwControl.oe66 (.switch:CSL_intcHwControl)
-                  0080dd14    00000010                      : csl_intcOpen.oe66 (.switch:CSL_intcOpen)
+.cio       0    00815e10    00000120     UNINITIALIZED
+                  00815e10    00000120     rts6600_elf.lib : trgmsg.obj (.cio)
 
 .neardata 
-*          0    0080dd24    00000000     UNINITIALIZED
+*          0    00815f30    000000c0     UNINITIALIZED
+                  00815f30    000000c0     KeyStone_common.obj (.neardata)
 
-.rodata    0    0080dd24    00000000     UNINITIALIZED
+.rodata    0    00815ff0    00000000     UNINITIALIZED
 
-.bss       0    0080dd24    00000058     UNINITIALIZED
-                  0080dd24    0000004c     ti.csl.intc.ae66 : _csl_intcResource.oe66 (.bss:csl_section:intc:uninit)
-                  0080dd70    00000008                      : _csl_intcResource.oe66 (.bss:csl_section:intc:init)
-                  0080dd78    00000004     (.common:state)
+.bss       0    00815ff0    00000058     UNINITIALIZED
+                  00815ff0    0000004c     ti.csl.intc.ae66 : _csl_intcResource.oe66 (.bss:csl_section:intc:uninit)
+                  0081603c    00000008                      : _csl_intcResource.oe66 (.bss:csl_section:intc:init)
+                  00816044    00000004     (.common:state)
 
-.cinit     0    0080dd80    00000170     
-                  0080dd80    00000131     (.cinit..fardata.load) [load image, compression = rle]
-                  0080deb1    00000003     --HOLE-- [fill = 0]
-                  0080deb4    0000000c     (__TI_handler_table)
-                  0080dec0    00000009     (.cinit..bss.load) [load image, compression = rle]
-                  0080dec9    00000003     --HOLE-- [fill = 0]
-                  0080decc    00000008     (.cinit..far.load) [load image, compression = zero_init]
-                  0080ded4    00000004     --HOLE-- [fill = 0]
-                  0080ded8    00000018     (__TI_cinit_table)
+.switch    0    00816048    000000d4     
+                  00816048    00000070     ti.csl.ae66 : csl_chip.oe66 (.switch:CSL_chipReadReg)
+                  008160b8    00000038     rts6600_elf.lib : _printfi.obj (.switch:_pproc_fgea)
+                  008160f0    0000001c     ti.csl.intc.ae66 : csl_intcHwControl.oe66 (.switch:CSL_intcHwControl)
+                  0081610c    00000010                      : csl_intcOpen.oe66 (.switch:CSL_intcOpen)
+
+.csl_vect 
+*          0    00816400    00000200     
+                  00816400    00000200     ti.csl.intc.ae66 : _csl_intcIsrDispatch.oe66 (.csl_vect)
+
+.cinit     0    00816600    000003c0     
+                  00816600    000002ab     (.cinit..fardata.load) [load image, compression = rle]
+                  008168ab    00000001     --HOLE-- [fill = 0]
+                  008168ac    000000c4     (.cinit..neardata.load) [load image, compression = rle]
+                  00816970    0000001a     (.cinit..far.load) [load image, compression = rle]
+                  0081698a    00000002     --HOLE-- [fill = 0]
+                  0081698c    00000009     (.cinit..bss.load) [load image, compression = rle]
+                  00816995    00000003     --HOLE-- [fill = 0]
+                  00816998    00000008     (__TI_handler_table)
+                  008169a0    00000020     (__TI_cinit_table)
 
 .IPC       0    0c200000    00000000     UNINITIALIZED
 
 .IPC       0    0c200004    00000000     UNINITIALIZED
 
-.csl_vect 
-*          0    0080e000    00000200     
-                  0080e000    00000200     ti.csl.intc.ae66 : _csl_intcIsrDispatch.oe66 (.csl_vect)
+.IPC       0    80000000    00000000     UNINITIALIZED
 
 
 LINKER GENERATED COPY TABLES
 
-__TI_cinit_table @ 0080ded8 records: 3, size/record: 8, table size: 24
-	.fardata: load addr=0080dd80, load size=00000131 bytes, run addr=0080d448, run size=000003e0 bytes, compression=rle
-	.bss: load addr=0080dec0, load size=00000009 bytes, run addr=0080dd24, run size=00000058 bytes, compression=rle
-	.far: load addr=0080decc, load size=00000008 bytes, run addr=0080cd80, run size=000006c8 bytes, compression=zero_init
+__TI_cinit_table @ 008169a0 records: 4, size/record: 8, table size: 32
+	.fardata: load addr=00816600, load size=000002ab bytes, run addr=00815890, run size=00000580 bytes, compression=rle
+	.neardata: load addr=008168ac, load size=000000c4 bytes, run addr=00815f30, run size=000000c0 bytes, compression=rle
+	.far: load addr=00816970, load size=0000001a bytes, run addr=00815148, run size=00000748 bytes, compression=rle
+	.bss: load addr=0081698c, load size=00000009 bytes, run addr=00815ff0, run size=00000058 bytes, compression=rle
 
 
 LINKER GENERATED HANDLER TABLE
 
-__TI_handler_table @ 0080deb4 records: 3, size/record: 4, table size: 12
+__TI_handler_table @ 00816998 records: 2, size/record: 4, table size: 8
 	index: 0, handler: __TI_decompress_rle24
 	index: 1, handler: __TI_decompress_none
-	index: 2, handler: __TI_zero_init
 
 
 GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
 
-address   name                           
--------   ----                           
-00808ce0  C$$EXIT                        
-00808680  C$$IO$$                        
-00806380  CSL_chipReadReg                
-00806938  CSL_intcGlobalDisable          
-00806918  CSL_intcGlobalEnable           
-008069ac  CSL_intcGlobalExcepClear       
-00806984  CSL_intcGlobalExcepEnable      
-00806998  CSL_intcGlobalExtExcepEnable   
-00806970  CSL_intcGlobalNmiEnable        
-00806958  CSL_intcGlobalRestore          
-00808d00  CSL_intcHookIsr                
-00802400  CSL_intcHwControl              
-00806740  CSL_intcInit                   
-008068d0  CSL_intcInterruptClear         
-008068b0  CSL_intcInterruptDisable       
-00806890  CSL_intcInterruptEnable        
-008068ec  CSL_intcInterruptRestore       
-008068e0  CSL_intcInterruptSet           
-00804660  CSL_intcOpen                   
-00807e20  CSL_intcPlugEventHandler       
-00806904  CSL_intcQueryInterruptStatus   
-0080d438  EventRecord                    
-0c200000  Flag                           
-008081e0  HOSTclose                      
-00806d60  HOSTlseek                      
-00807360  HOSTopen                       
-00807a60  HOSTread                       
-008058e0  HOSTrename                     
-00807b20  HOSTunlink                     
-00807440  HOSTwrite                      
-00800798  IPC_ISR                        
-008006f8  IssueInterruptToNextCore       
-0c200004  Pkt_Test                       
-0080cd80  Record                         
-0080dd70  _CSL_intcAllocMask             
-0080dd24  _CSL_intcCpuIntrTable          
-00805700  _CSL_intcDispatcher            
-00804880  _CSL_intcEvent0Dispatcher      
-00804aa0  _CSL_intcEvent1Dispatcher      
-00804cc0  _CSL_intcEvent2Dispatcher      
-00804ee0  _CSL_intcEvent3Dispatcher      
-0080dd6c  _CSL_intcEventHandlerRecord    
-0080dd74  _CSL_intcEventOffsetMap        
-00806880  _CSL_intcIvpSet                
-00808d20  _CSL_intcNmiDummy              
-0080dd68  _CSL_intcNumEvents             
-0080e000  _CSL_intcVectorTable           
-0080db30  __CIOBUF_                      
-0080ded8  __TI_CINIT_Base                
-0080def0  __TI_CINIT_Limit               
-0080deb4  __TI_Handler_Table_Base        
-0080dec0  __TI_Handler_Table_Limit       
-UNDEFED   __TI_INITARRAY_Base            
-UNDEFED   __TI_INITARRAY_Limit           
-0080ad80  __TI_STACK_END                 
-00002000  __TI_STACK_SIZE                
-0080dd24  __TI_STATIC_BASE               
-00002000  __TI_SYSMEM_SIZE               
-UNDEFED   __TI_TLS_INIT_Base             
-UNDEFED   __TI_TLS_INIT_Limit            
-00808280  __TI_cleanup                   
-0080d800  __TI_cleanup_ptr               
-008064c0  __TI_closefile                 
-00808d40  __TI_decompress_none           
-00808d60  __TI_decompress_rle24          
-00807be0  __TI_doflush                   
-0080d804  __TI_dtors_ptr                 
-0080d808  __TI_enable_exit_profile_output
-008088a0  __TI_frcmpyd_div               
-0080d820  __TI_ft_end                    
-ffffffff  __TI_pprof_out_hndl            
-00801fa0  __TI_printfi                   
-ffffffff  __TI_prof_data_size            
-ffffffff  __TI_prof_data_start           
-008085a0  __TI_readmsg                   
-00808120  __TI_tls_init                  
-0080d180  __TI_tmpnams                   
-00808620  __TI_writemsg                  
-00806e60  __TI_wrt_ok                    
-008076e0  __TI_zero_init                 
-ffffffff  __binit__                      
-00800e80  __c6xabi_divd                  
-00807ca0  __c6xabi_divu                  
-00805520  __c6xabi_divul                 
-00803b20  __c6xabi_divull                
-00808c60  __c6xabi_errno_addr            
-00808ba0  __c6xabi_isinf                 
-008086a0  __c6xabi_llshl                 
-00808900  __c6xabi_llshru                
-ffffffff  __c_args__                     
-00807ca0  __divu                         
-0080d824  __errno                        
-00808c20  _args_main                     
-00806600  _auto_init_elf                 
-00808960  _c_int00                       
-0080d9e8  _ctypes_                       
-0080d448  _ftable                        
-0080d818  _lock                          
-008083c0  _minit                         
-00808c80  _nop                           
-00808d80  _stack                         
-008089c0  _subcull                       
-0080ad80  _sys_memory                    
-0080d81c  _unlock                        
-00808ce0  abort                          
-00807160  atoi                           
-ffffffff  binit                          
-00800000  boot                           
-00807600  close                          
-0080d2c0  context                        
-00807260  copy_in                        
-0080d418  coreVector                     
-0080d824  errno                          
-00807ee0  exit                           
-00805100  fputc                          
-008027c0  fputs                          
-008033a0  free                           
-00805c20  frexp                          
-00806c40  fseek                          
-0080d3d8  hintc                          
-0080d7c0  iIPCARInfo                     
-0080d7e0  iIPCGRInfo                     
-0080d6c8  intInfo                        
-00800480  intcInit                       
-0080d358  intcObj                        
-00806b00  ldexp                          
-00808a20  lseek                          
-008077c0  ltoa                           
-00805e40  main                           
-00805f40  malloc                         
-00808a80  memccpy                        
-00808500  memcpy                         
-008078a0  memset                         
-00807980  printf                         
-008004e0  registerInterrupt              
-00808820  remove                         
-00804420  setvbuf                        
-0080dd78  state                          
-00808820  unlink                         
-00808b40  write                          
+address   name                                      
+-------   ----                                      
+00804f50  Bus_error_handler                         
+0080f300  C$$EXIT                                   
+0080eb20  C$$IO$$                                   
+00805a70  CPU_interrupt_enable                      
+008059d8  CPU_interrupt_init                        
+0080c900  CSL_chipReadReg                           
+0080ceb8  CSL_intcGlobalDisable                     
+0080ce98  CSL_intcGlobalEnable                      
+0080cf2c  CSL_intcGlobalExcepClear                  
+0080cf04  CSL_intcGlobalExcepEnable                 
+0080cf18  CSL_intcGlobalExtExcepEnable              
+0080cef0  CSL_intcGlobalNmiEnable                   
+0080ced8  CSL_intcGlobalRestore                     
+0080f320  CSL_intcHookIsr                           
+00808880  CSL_intcHwControl                         
+0080ccc0  CSL_intcInit                              
+0080ce50  CSL_intcInterruptClear                    
+0080ce30  CSL_intcInterruptDisable                  
+0080ce10  CSL_intcInterruptEnable                   
+0080ce6c  CSL_intcInterruptRestore                  
+0080ce60  CSL_intcInterruptSet                      
+0080ad60  CSL_intcOpen                              
+0080e2c0  CSL_intcPlugEventHandler                  
+0080ce84  CSL_intcQueryInterruptStatus              
+00807d20  DDR3_Init                                 
+00807bc0  DDR3_PLL_Init                             
+00807cb0  DDR3_clock_phase_init                     
+80000000  DDR_Test                                  
+00802b60  EDMA_CC_error_handler                     
+00802d70  EDMA_TC_error_handler                     
+00801d50  EDMA_TC_priority_cfg                      
+00801cd8  EDMA_channel_TC_cfg                       
+00802514  EDMA_copy                                 
+00802ea4  EDMA_error_handler                        
+0080232c  EDMA_event_disable                        
+008022c0  EDMA_event_enable                         
+0080272c  EDMA_fill                                 
+00801db8  EDMA_init                                 
+00802404  EDMA_interrupt_disable                    
+00802394  EDMA_interrupt_enable                     
+0080246c  EDMA_wait                                 
+008059ac  EXC_NMI                                   
+008058e8  EXC_internal                              
+008059c4  EXC_swgen                                 
+00815880  EventRecord                               
+008076c0  Exception_service_routine                 
+0c200000  Flag                                      
+0080e680  HOSTclose                                 
+0080d2e0  HOSTlseek                                 
+0080d8e0  HOSTopen                                  
+0080df00  HOSTread                                  
+0080bfe0  HOSTrename                                
+0080dfc0  HOSTunlink                                
+0080d9c0  HOSTwrite                                 
+00802ae4  IDMA_copy                                 
+00802ab4  IDMA_wait                                 
+008061a8  IPC_ISR                                   
+008064e8  Init_Core0                                
+00806138  IssueInterruptToNextCore                  
+00805024  KeyStone_CIC_EXC_handler                  
+00804914  KeyStone_CIC_exception_events_mapping     
+008033a8  KeyStone_CorePac_AID_map                  
+008013d4  KeyStone_DDR_PLL_init                     
+0080544c  KeyStone_EXC_external                     
+00804dac  KeyStone_Exception_cfg                    
+008085d0  KeyStone_MPAX_seg_setup                   
+00803b6c  KeyStone_MPU_MPPA_modify                  
+00803c64  KeyStone_MPU_interrupt_enable             
+00803d00  KeyStone_MPU_interrupts_enable            
+00803910  KeyStone_MPU_range_setup                  
+00803988  KeyStone_MPU_setup                        
+00803648  KeyStone_MSMC_MP_interrupt_en             
+008037c8  KeyStone_MSMC_protection_exception_handler
+00801348  KeyStone_PASS_PLL_init                    
+008011a0  KeyStone_PLL_init                         
+00803444  KeyStone_PrivID_Remap                     
+00803578  KeyStone_SES_MPAX_setup                   
+00803fc8  KeyStone_SL2_EDC_enable                   
+00804640  KeyStone_SL2_EDC_handler                  
+00804058  KeyStone_SL2_EDC_interrupt_en             
+008034ac  KeyStone_SMS_MPAX_setup                   
+00808778  KeyStone_XMC_MPAX_setup                   
+00805d98  KeyStone_common_CPU_init                  
+00805d60  KeyStone_common_device_init               
+00801c38  KeyStone_disable_PSC_Power_Domain         
+00801b90  KeyStone_disable_PSC_module               
+00801a60  KeyStone_enable_PSC_module                
+00805b88  KeyStone_get_device_info                  
+00805aac  KeyStone_get_device_speed_grade           
+00800d84  KeyStone_main_PLL_init                    
+00803ed8  KeyStone_peripherals_MPU_excepiton_handler
+00803dd8  KeyStone_peripherals_MPU_fault_status     
+008030d0  L1D_memory_protection_cfg                 
+00804268  L1P_EDC_setup                             
+00804510  L1P_ED_handler                            
+00803044  L1P_memory_protection_cfg                 
+00802fac  L1_MPPA_setup                             
+00803160  L1_cache_protection                       
+00815fdc  LL2_EDC_DMA_err_str                       
+00815fe0  LL2_EDC_L1D_err_str                       
+00815fe4  LL2_EDC_L1P_err_str                       
+008042f0  LL2_EDC_handler                           
+00804174  LL2_EDC_scrub                             
+008040ac  LL2_EDC_setup                             
+00815fd8  LL2_EDC_victim_err_str                    
+00803170  LL2_MPPA_setup                            
+00803210  LL2_Memory_Protection_cfg                 
+008079a4  Nested_Exception_service_routine          
+00815e00  Ns_str                                    
+00815da8  Peri_MPU_err_type_str                     
+0c200004  Pkt_Test                                  
+00815148  Record                                    
+00801608  Reset_Timer                               
+00801a20  Service_Watchdog                          
+008038b0  TN_MPU5_constant                          
+008014b8  TSC_delay_ms                              
+00801560  TSC_delay_us                              
+008014a8  TSC_init                                  
+008063cc  Test_DDR                                  
+00806450  Test_MSMC                                 
+00801664  Timer64_Init                              
+0081603c  _CSL_intcAllocMask                        
+00815ff0  _CSL_intcCpuIntrTable                     
+0080be00  _CSL_intcDispatcher                       
+0080af80  _CSL_intcEvent0Dispatcher                 
+0080b1a0  _CSL_intcEvent1Dispatcher                 
+0080b3c0  _CSL_intcEvent2Dispatcher                 
+0080b5e0  _CSL_intcEvent3Dispatcher                 
+00816038  _CSL_intcEventHandlerRecord               
+00816040  _CSL_intcEventOffsetMap                   
+0080ce00  _CSL_intcIvpSet                           
+0080f340  _CSL_intcNmiDummy                         
+00816034  _CSL_intcNumEvents                        
+00816400  _CSL_intcVectorTable                      
+00815e10  __CIOBUF_                                 
+008169a0  __TI_CINIT_Base                           
+008169c0  __TI_CINIT_Limit                          
+00816998  __TI_Handler_Table_Base                   
+008169a0  __TI_Handler_Table_Limit                  
+UNDEFED   __TI_INITARRAY_Base                       
+UNDEFED   __TI_INITARRAY_Limit                      
+008113a0  __TI_STACK_END                            
+00002000  __TI_STACK_SIZE                           
+00815f30  __TI_STATIC_BASE                          
+00002000  __TI_SYSMEM_SIZE                          
+UNDEFED   __TI_TLS_INIT_Base                        
+UNDEFED   __TI_TLS_INIT_Limit                       
+0080e720  __TI_cleanup                              
+00815de4  __TI_cleanup_ptr                          
+0080ca40  __TI_closefile                            
+0080f360  __TI_decompress_none                      
+0080f380  __TI_decompress_rle24                     
+0080e080  __TI_doflush                              
+00815de8  __TI_dtors_ptr                            
+00815dec  __TI_enable_exit_profile_output           
+0080ee40  __TI_frcmpyd_div                          
+00815ce4  __TI_ft_end                               
+ffffffff  __TI_pprof_out_hndl                       
+00808000  __TI_printfi                              
+ffffffff  __TI_prof_data_size                       
+ffffffff  __TI_prof_data_start                      
+0080ea40  __TI_readmsg                              
+0080e5c0  __TI_tls_init                             
+00815548  __TI_tmpnams                              
+0080eac0  __TI_writemsg                             
+0080d3e0  __TI_wrt_ok                               
+ffffffff  __binit__                                 
+008065a0  __c6xabi_divd                             
+00809ac0  __c6xabi_divf                             
+0080e140  __c6xabi_divu                             
+0080bc20  __c6xabi_divul                            
+0080a220  __c6xabi_divull                           
+0080f280  __c6xabi_errno_addr                       
+0080eb40  __c6xabi_fixfu                            
+0080f140  __c6xabi_isinf                            
+0080ebc0  __c6xabi_llshl                            
+0080eea0  __c6xabi_llshru                           
+0080f1c0  __c6xabi_strasgi_64plus                   
+ffffffff  __c_args__                                
+0080e140  __divu                                    
+00815dd4  __errno                                   
+0080f1c0  __strasgi_64plus                          
+0080f200  _args_main                                
+0080cb80  _auto_init_elf                            
+0080ef00  _c_int00                                  
+00814fa8  _ctypes_                                  
+00815890  _ftable                                   
+00815c94  _lock                                     
+0080e860  _minit                                    
+0080f2a0  _nop                                      
+0080f3a0  _stack                                    
+0080ef60  _subcull                                  
+008113a0  _sys_memory                               
+00815cbc  _unlock                                   
+0080f300  abort                                     
+0080d6e0  atoi                                      
+ffffffff  binit                                     
+00800000  boot                                      
+00815ce8  boot_mode_str                             
+00815d08  bus_err_stat_str                          
+00801464  calc_cycle_measure_overhead               
+0080db80  close                                     
+00815688  context                                   
+0080d7e0  copy_in                                   
+00815850  coreVector                                
+00815fd0  cycle_measure_overhead                    
+00815dc0  device_type_str                           
+00815e08  endian_str                                
+00815dd4  errno                                     
+008157a0  exception_record                          
+0080e380  exit                                      
+0080b800  fputc                                     
+00808c40  fputs                                     
+00809820  free                                      
+0080c320  frexp                                     
+0080d1c0  fseek                                     
+00815d28  gCIC_EXC_EN_MASK                          
+00815fec  gCIC_EXC_out_num                          
+00815fc8  gDSP_Core_Speed_Hz                        
+00815fcc  gDSP_board_type                           
+00815f38  gpBootCfgRegs                             
+00815f34  gpCGEM_regs                               
+00815f50  gpCIC0_regs                               
+00815f54  gpCIC1_regs                               
+00815f58  gpCIC_regs                                
+00815fc4  gpDDR_regs                                
+00815f5c  gpEDMA_CC0_regs                           
+00815f60  gpEDMA_CC1_regs                           
+00815f64  gpEDMA_CC2_regs                           
+00815dd8  gpEDMA_CC_regs                            
+00815f68  gpEDMA_TC_0_0_regs                        
+00815f6c  gpEDMA_TC_0_1_regs                        
+00815f70  gpEDMA_TC_1_0_regs                        
+00815f74  gpEDMA_TC_1_1_regs                        
+00815f78  gpEDMA_TC_1_2_regs                        
+00815f7c  gpEDMA_TC_1_3_regs                        
+00815f80  gpEDMA_TC_2_0_regs                        
+00815f84  gpEDMA_TC_2_1_regs                        
+00815f88  gpEDMA_TC_2_2_regs                        
+00815f8c  gpEDMA_TC_2_3_regs                        
+00815c48  gpEDMA_TC_regs                            
+00815f48  gpGPIO_regs                               
+00815fb4  gpMPU0_regs                               
+00815fb8  gpMPU1_regs                               
+00815fbc  gpMPU2_regs                               
+00815fc0  gpMPU3_regs                               
+00815d48  gpMPU_regs                                
+00815f44  gpMSMC_regs                               
+00815f3c  gpPLLC_regs                               
+00815f40  gpPSC_regs                                
+00815f4c  gpSRIO_regs                               
+00815f90  gpTimer0Regs                              
+00815f94  gpTimer1Regs                              
+00815f98  gpTimer2Regs                              
+00815f9c  gpTimer3Regs                              
+00815fa0  gpTimer4Regs                              
+00815fa4  gpTimer5Regs                              
+00815fa8  gpTimer6Regs                              
+00815fac  gpTimer7Regs                              
+00815fb0  gpTimer8Regs                              
+00815c70  gpTimerRegs                               
+00815f30  gpXMC_regs                                
+00815c08  gstruMpuAddrRange                         
+00815fe8  guwIntcCICExcEvtIdx                       
+00815810  hintc                                     
+00815d68  iIPCARInfo                                
+00815d88  iIPCGRInfo                                
+00815c98  input_clk_str                             
+00815b10  intInfo                                   
+00805ec0  intcInit                                  
+00815720  intcObj                                   
+00815cc0  internal_exception_str                    
+0080d080  ldexp                                     
+00808460  lock_mem_prot_regs                        
+0080efc0  lseek                                     
+0080dc60  ltoa                                      
+0080ed40  main                                      
+0080c4c0  malloc                                    
+00815870  mem_prot_key                              
+0080f020  memccpy                                   
+0080e9a0  memcpy                                    
+008036b0  memory_protection_exception_handler       
+0080dd40  memset                                    
+0080de20  printf                                    
+0080f240  puts                                      
+00805f20  registerInterrupt                         
+0080edc0  remove                                    
+0080ab20  setvbuf                                   
+00816044  state                                     
+00815fd4  uiLL2_scrub_addr                          
+0080edc0  unlink                                    
+00808514  unlock_mem_prot_regs                      
+0080f0e0  write                                     
 
 
 GLOBAL SYMBOLS: SORTED BY Symbol Address 
 
-address   name                           
--------   ----                           
-00002000  __TI_STACK_SIZE                
-00002000  __TI_SYSMEM_SIZE               
-00800000  boot                           
-00800480  intcInit                       
-008004e0  registerInterrupt              
-008006f8  IssueInterruptToNextCore       
-00800798  IPC_ISR                        
-00800e80  __c6xabi_divd                  
-00801fa0  __TI_printfi                   
-00802400  CSL_intcHwControl              
-008027c0  fputs                          
-008033a0  free                           
-00803b20  __c6xabi_divull                
-00804420  setvbuf                        
-00804660  CSL_intcOpen                   
-00804880  _CSL_intcEvent0Dispatcher      
-00804aa0  _CSL_intcEvent1Dispatcher      
-00804cc0  _CSL_intcEvent2Dispatcher      
-00804ee0  _CSL_intcEvent3Dispatcher      
-00805100  fputc                          
-00805520  __c6xabi_divul                 
-00805700  _CSL_intcDispatcher            
-008058e0  HOSTrename                     
-00805c20  frexp                          
-00805e40  main                           
-00805f40  malloc                         
-00806380  CSL_chipReadReg                
-008064c0  __TI_closefile                 
-00806600  _auto_init_elf                 
-00806740  CSL_intcInit                   
-00806880  _CSL_intcIvpSet                
-00806890  CSL_intcInterruptEnable        
-008068b0  CSL_intcInterruptDisable       
-008068d0  CSL_intcInterruptClear         
-008068e0  CSL_intcInterruptSet           
-008068ec  CSL_intcInterruptRestore       
-00806904  CSL_intcQueryInterruptStatus   
-00806918  CSL_intcGlobalEnable           
-00806938  CSL_intcGlobalDisable          
-00806958  CSL_intcGlobalRestore          
-00806970  CSL_intcGlobalNmiEnable        
-00806984  CSL_intcGlobalExcepEnable      
-00806998  CSL_intcGlobalExtExcepEnable   
-008069ac  CSL_intcGlobalExcepClear       
-00806b00  ldexp                          
-00806c40  fseek                          
-00806d60  HOSTlseek                      
-00806e60  __TI_wrt_ok                    
-00807160  atoi                           
-00807260  copy_in                        
-00807360  HOSTopen                       
-00807440  HOSTwrite                      
-00807600  close                          
-008076e0  __TI_zero_init                 
-008077c0  ltoa                           
-008078a0  memset                         
-00807980  printf                         
-00807a60  HOSTread                       
-00807b20  HOSTunlink                     
-00807be0  __TI_doflush                   
-00807ca0  __c6xabi_divu                  
-00807ca0  __divu                         
-00807e20  CSL_intcPlugEventHandler       
-00807ee0  exit                           
-00808120  __TI_tls_init                  
-008081e0  HOSTclose                      
-00808280  __TI_cleanup                   
-008083c0  _minit                         
-00808500  memcpy                         
-008085a0  __TI_readmsg                   
-00808620  __TI_writemsg                  
-00808680  C$$IO$$                        
-008086a0  __c6xabi_llshl                 
-00808820  remove                         
-00808820  unlink                         
-008088a0  __TI_frcmpyd_div               
-00808900  __c6xabi_llshru                
-00808960  _c_int00                       
-008089c0  _subcull                       
-00808a20  lseek                          
-00808a80  memccpy                        
-00808b40  write                          
-00808ba0  __c6xabi_isinf                 
-00808c20  _args_main                     
-00808c60  __c6xabi_errno_addr            
-00808c80  _nop                           
-00808ce0  C$$EXIT                        
-00808ce0  abort                          
-00808d00  CSL_intcHookIsr                
-00808d20  _CSL_intcNmiDummy              
-00808d40  __TI_decompress_none           
-00808d60  __TI_decompress_rle24          
-00808d80  _stack                         
-0080ad80  __TI_STACK_END                 
-0080ad80  _sys_memory                    
-0080cd80  Record                         
-0080d180  __TI_tmpnams                   
-0080d2c0  context                        
-0080d358  intcObj                        
-0080d3d8  hintc                          
-0080d418  coreVector                     
-0080d438  EventRecord                    
-0080d448  _ftable                        
-0080d6c8  intInfo                        
-0080d7c0  iIPCARInfo                     
-0080d7e0  iIPCGRInfo                     
-0080d800  __TI_cleanup_ptr               
-0080d804  __TI_dtors_ptr                 
-0080d808  __TI_enable_exit_profile_output
-0080d818  _lock                          
-0080d81c  _unlock                        
-0080d820  __TI_ft_end                    
-0080d824  __errno                        
-0080d824  errno                          
-0080d9e8  _ctypes_                       
-0080db30  __CIOBUF_                      
-0080dd24  _CSL_intcCpuIntrTable          
-0080dd24  __TI_STATIC_BASE               
-0080dd68  _CSL_intcNumEvents             
-0080dd6c  _CSL_intcEventHandlerRecord    
-0080dd70  _CSL_intcAllocMask             
-0080dd74  _CSL_intcEventOffsetMap        
-0080dd78  state                          
-0080deb4  __TI_Handler_Table_Base        
-0080dec0  __TI_Handler_Table_Limit       
-0080ded8  __TI_CINIT_Base                
-0080def0  __TI_CINIT_Limit               
-0080e000  _CSL_intcVectorTable           
-0c200000  Flag                           
-0c200004  Pkt_Test                       
-ffffffff  __TI_pprof_out_hndl            
-ffffffff  __TI_prof_data_size            
-ffffffff  __TI_prof_data_start           
-ffffffff  __binit__                      
-ffffffff  __c_args__                     
-ffffffff  binit                          
-UNDEFED   __TI_INITARRAY_Base            
-UNDEFED   __TI_INITARRAY_Limit           
-UNDEFED   __TI_TLS_INIT_Base             
-UNDEFED   __TI_TLS_INIT_Limit            
+address   name                                      
+-------   ----                                      
+00002000  __TI_STACK_SIZE                           
+00002000  __TI_SYSMEM_SIZE                          
+00800000  boot                                      
+00800d84  KeyStone_main_PLL_init                    
+008011a0  KeyStone_PLL_init                         
+00801348  KeyStone_PASS_PLL_init                    
+008013d4  KeyStone_DDR_PLL_init                     
+00801464  calc_cycle_measure_overhead               
+008014a8  TSC_init                                  
+008014b8  TSC_delay_ms                              
+00801560  TSC_delay_us                              
+00801608  Reset_Timer                               
+00801664  Timer64_Init                              
+00801a20  Service_Watchdog                          
+00801a60  KeyStone_enable_PSC_module                
+00801b90  KeyStone_disable_PSC_module               
+00801c38  KeyStone_disable_PSC_Power_Domain         
+00801cd8  EDMA_channel_TC_cfg                       
+00801d50  EDMA_TC_priority_cfg                      
+00801db8  EDMA_init                                 
+008022c0  EDMA_event_enable                         
+0080232c  EDMA_event_disable                        
+00802394  EDMA_interrupt_enable                     
+00802404  EDMA_interrupt_disable                    
+0080246c  EDMA_wait                                 
+00802514  EDMA_copy                                 
+0080272c  EDMA_fill                                 
+00802ab4  IDMA_wait                                 
+00802ae4  IDMA_copy                                 
+00802b60  EDMA_CC_error_handler                     
+00802d70  EDMA_TC_error_handler                     
+00802ea4  EDMA_error_handler                        
+00802fac  L1_MPPA_setup                             
+00803044  L1P_memory_protection_cfg                 
+008030d0  L1D_memory_protection_cfg                 
+00803160  L1_cache_protection                       
+00803170  LL2_MPPA_setup                            
+00803210  LL2_Memory_Protection_cfg                 
+008033a8  KeyStone_CorePac_AID_map                  
+00803444  KeyStone_PrivID_Remap                     
+008034ac  KeyStone_SMS_MPAX_setup                   
+00803578  KeyStone_SES_MPAX_setup                   
+00803648  KeyStone_MSMC_MP_interrupt_en             
+008036b0  memory_protection_exception_handler       
+008037c8  KeyStone_MSMC_protection_exception_handler
+008038b0  TN_MPU5_constant                          
+00803910  KeyStone_MPU_range_setup                  
+00803988  KeyStone_MPU_setup                        
+00803b6c  KeyStone_MPU_MPPA_modify                  
+00803c64  KeyStone_MPU_interrupt_enable             
+00803d00  KeyStone_MPU_interrupts_enable            
+00803dd8  KeyStone_peripherals_MPU_fault_status     
+00803ed8  KeyStone_peripherals_MPU_excepiton_handler
+00803fc8  KeyStone_SL2_EDC_enable                   
+00804058  KeyStone_SL2_EDC_interrupt_en             
+008040ac  LL2_EDC_setup                             
+00804174  LL2_EDC_scrub                             
+00804268  L1P_EDC_setup                             
+008042f0  LL2_EDC_handler                           
+00804510  L1P_ED_handler                            
+00804640  KeyStone_SL2_EDC_handler                  
+00804914  KeyStone_CIC_exception_events_mapping     
+00804dac  KeyStone_Exception_cfg                    
+00804f50  Bus_error_handler                         
+00805024  KeyStone_CIC_EXC_handler                  
+0080544c  KeyStone_EXC_external                     
+008058e8  EXC_internal                              
+008059ac  EXC_NMI                                   
+008059c4  EXC_swgen                                 
+008059d8  CPU_interrupt_init                        
+00805a70  CPU_interrupt_enable                      
+00805aac  KeyStone_get_device_speed_grade           
+00805b88  KeyStone_get_device_info                  
+00805d60  KeyStone_common_device_init               
+00805d98  KeyStone_common_CPU_init                  
+00805ec0  intcInit                                  
+00805f20  registerInterrupt                         
+00806138  IssueInterruptToNextCore                  
+008061a8  IPC_ISR                                   
+008063cc  Test_DDR                                  
+00806450  Test_MSMC                                 
+008064e8  Init_Core0                                
+008065a0  __c6xabi_divd                             
+008076c0  Exception_service_routine                 
+008079a4  Nested_Exception_service_routine          
+00807bc0  DDR3_PLL_Init                             
+00807cb0  DDR3_clock_phase_init                     
+00807d20  DDR3_Init                                 
+00808000  __TI_printfi                              
+00808460  lock_mem_prot_regs                        
+00808514  unlock_mem_prot_regs                      
+008085d0  KeyStone_MPAX_seg_setup                   
+00808778  KeyStone_XMC_MPAX_setup                   
+00808880  CSL_intcHwControl                         
+00808c40  fputs                                     
+00809820  free                                      
+00809ac0  __c6xabi_divf                             
+0080a220  __c6xabi_divull                           
+0080ab20  setvbuf                                   
+0080ad60  CSL_intcOpen                              
+0080af80  _CSL_intcEvent0Dispatcher                 
+0080b1a0  _CSL_intcEvent1Dispatcher                 
+0080b3c0  _CSL_intcEvent2Dispatcher                 
+0080b5e0  _CSL_intcEvent3Dispatcher                 
+0080b800  fputc                                     
+0080bc20  __c6xabi_divul                            
+0080be00  _CSL_intcDispatcher                       
+0080bfe0  HOSTrename                                
+0080c320  frexp                                     
+0080c4c0  malloc                                    
+0080c900  CSL_chipReadReg                           
+0080ca40  __TI_closefile                            
+0080cb80  _auto_init_elf                            
+0080ccc0  CSL_intcInit                              
+0080ce00  _CSL_intcIvpSet                           
+0080ce10  CSL_intcInterruptEnable                   
+0080ce30  CSL_intcInterruptDisable                  
+0080ce50  CSL_intcInterruptClear                    
+0080ce60  CSL_intcInterruptSet                      
+0080ce6c  CSL_intcInterruptRestore                  
+0080ce84  CSL_intcQueryInterruptStatus              
+0080ce98  CSL_intcGlobalEnable                      
+0080ceb8  CSL_intcGlobalDisable                     
+0080ced8  CSL_intcGlobalRestore                     
+0080cef0  CSL_intcGlobalNmiEnable                   
+0080cf04  CSL_intcGlobalExcepEnable                 
+0080cf18  CSL_intcGlobalExtExcepEnable              
+0080cf2c  CSL_intcGlobalExcepClear                  
+0080d080  ldexp                                     
+0080d1c0  fseek                                     
+0080d2e0  HOSTlseek                                 
+0080d3e0  __TI_wrt_ok                               
+0080d6e0  atoi                                      
+0080d7e0  copy_in                                   
+0080d8e0  HOSTopen                                  
+0080d9c0  HOSTwrite                                 
+0080db80  close                                     
+0080dc60  ltoa                                      
+0080dd40  memset                                    
+0080de20  printf                                    
+0080df00  HOSTread                                  
+0080dfc0  HOSTunlink                                
+0080e080  __TI_doflush                              
+0080e140  __c6xabi_divu                             
+0080e140  __divu                                    
+0080e2c0  CSL_intcPlugEventHandler                  
+0080e380  exit                                      
+0080e5c0  __TI_tls_init                             
+0080e680  HOSTclose                                 
+0080e720  __TI_cleanup                              
+0080e860  _minit                                    
+0080e9a0  memcpy                                    
+0080ea40  __TI_readmsg                              
+0080eac0  __TI_writemsg                             
+0080eb20  C$$IO$$                                   
+0080eb40  __c6xabi_fixfu                            
+0080ebc0  __c6xabi_llshl                            
+0080ed40  main                                      
+0080edc0  remove                                    
+0080edc0  unlink                                    
+0080ee40  __TI_frcmpyd_div                          
+0080eea0  __c6xabi_llshru                           
+0080ef00  _c_int00                                  
+0080ef60  _subcull                                  
+0080efc0  lseek                                     
+0080f020  memccpy                                   
+0080f0e0  write                                     
+0080f140  __c6xabi_isinf                            
+0080f1c0  __c6xabi_strasgi_64plus                   
+0080f1c0  __strasgi_64plus                          
+0080f200  _args_main                                
+0080f240  puts                                      
+0080f280  __c6xabi_errno_addr                       
+0080f2a0  _nop                                      
+0080f300  C$$EXIT                                   
+0080f300  abort                                     
+0080f320  CSL_intcHookIsr                           
+0080f340  _CSL_intcNmiDummy                         
+0080f360  __TI_decompress_none                      
+0080f380  __TI_decompress_rle24                     
+0080f3a0  _stack                                    
+008113a0  __TI_STACK_END                            
+008113a0  _sys_memory                               
+00814fa8  _ctypes_                                  
+00815148  Record                                    
+00815548  __TI_tmpnams                              
+00815688  context                                   
+00815720  intcObj                                   
+008157a0  exception_record                          
+00815810  hintc                                     
+00815850  coreVector                                
+00815870  mem_prot_key                              
+00815880  EventRecord                               
+00815890  _ftable                                   
+00815b10  intInfo                                   
+00815c08  gstruMpuAddrRange                         
+00815c48  gpEDMA_TC_regs                            
+00815c70  gpTimerRegs                               
+00815c94  _lock                                     
+00815c98  input_clk_str                             
+00815cbc  _unlock                                   
+00815cc0  internal_exception_str                    
+00815ce4  __TI_ft_end                               
+00815ce8  boot_mode_str                             
+00815d08  bus_err_stat_str                          
+00815d28  gCIC_EXC_EN_MASK                          
+00815d48  gpMPU_regs                                
+00815d68  iIPCARInfo                                
+00815d88  iIPCGRInfo                                
+00815da8  Peri_MPU_err_type_str                     
+00815dc0  device_type_str                           
+00815dd4  __errno                                   
+00815dd4  errno                                     
+00815dd8  gpEDMA_CC_regs                            
+00815de4  __TI_cleanup_ptr                          
+00815de8  __TI_dtors_ptr                            
+00815dec  __TI_enable_exit_profile_output           
+00815e00  Ns_str                                    
+00815e08  endian_str                                
+00815e10  __CIOBUF_                                 
+00815f30  __TI_STATIC_BASE                          
+00815f30  gpXMC_regs                                
+00815f34  gpCGEM_regs                               
+00815f38  gpBootCfgRegs                             
+00815f3c  gpPLLC_regs                               
+00815f40  gpPSC_regs                                
+00815f44  gpMSMC_regs                               
+00815f48  gpGPIO_regs                               
+00815f4c  gpSRIO_regs                               
+00815f50  gpCIC0_regs                               
+00815f54  gpCIC1_regs                               
+00815f58  gpCIC_regs                                
+00815f5c  gpEDMA_CC0_regs                           
+00815f60  gpEDMA_CC1_regs                           
+00815f64  gpEDMA_CC2_regs                           
+00815f68  gpEDMA_TC_0_0_regs                        
+00815f6c  gpEDMA_TC_0_1_regs                        
+00815f70  gpEDMA_TC_1_0_regs                        
+00815f74  gpEDMA_TC_1_1_regs                        
+00815f78  gpEDMA_TC_1_2_regs                        
+00815f7c  gpEDMA_TC_1_3_regs                        
+00815f80  gpEDMA_TC_2_0_regs                        
+00815f84  gpEDMA_TC_2_1_regs                        
+00815f88  gpEDMA_TC_2_2_regs                        
+00815f8c  gpEDMA_TC_2_3_regs                        
+00815f90  gpTimer0Regs                              
+00815f94  gpTimer1Regs                              
+00815f98  gpTimer2Regs                              
+00815f9c  gpTimer3Regs                              
+00815fa0  gpTimer4Regs                              
+00815fa4  gpTimer5Regs                              
+00815fa8  gpTimer6Regs                              
+00815fac  gpTimer7Regs                              
+00815fb0  gpTimer8Regs                              
+00815fb4  gpMPU0_regs                               
+00815fb8  gpMPU1_regs                               
+00815fbc  gpMPU2_regs                               
+00815fc0  gpMPU3_regs                               
+00815fc4  gpDDR_regs                                
+00815fc8  gDSP_Core_Speed_Hz                        
+00815fcc  gDSP_board_type                           
+00815fd0  cycle_measure_overhead                    
+00815fd4  uiLL2_scrub_addr                          
+00815fd8  LL2_EDC_victim_err_str                    
+00815fdc  LL2_EDC_DMA_err_str                       
+00815fe0  LL2_EDC_L1D_err_str                       
+00815fe4  LL2_EDC_L1P_err_str                       
+00815fe8  guwIntcCICExcEvtIdx                       
+00815fec  gCIC_EXC_out_num                          
+00815ff0  _CSL_intcCpuIntrTable                     
+00816034  _CSL_intcNumEvents                        
+00816038  _CSL_intcEventHandlerRecord               
+0081603c  _CSL_intcAllocMask                        
+00816040  _CSL_intcEventOffsetMap                   
+00816044  state                                     
+00816400  _CSL_intcVectorTable                      
+00816998  __TI_Handler_Table_Base                   
+008169a0  __TI_CINIT_Base                           
+008169a0  __TI_Handler_Table_Limit                  
+008169c0  __TI_CINIT_Limit                          
+0c200000  Flag                                      
+0c200004  Pkt_Test                                  
+80000000  DDR_Test                                  
+ffffffff  __TI_pprof_out_hndl                       
+ffffffff  __TI_prof_data_size                       
+ffffffff  __TI_prof_data_start                      
+ffffffff  __binit__                                 
+ffffffff  __c_args__                                
+ffffffff  binit                                     
+UNDEFED   __TI_INITARRAY_Base                       
+UNDEFED   __TI_INITARRAY_Limit                      
+UNDEFED   __TI_TLS_INIT_Base                        
+UNDEFED   __TI_TLS_INIT_Limit                       
 
-[140 symbols]
+[293 symbols]

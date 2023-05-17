@@ -13,6 +13,8 @@ ORDERED_OBJS += \
 "./bootload.obj" \
 "./ipc_interrupt.obj" \
 "./main.obj" \
+"./inc/DDR3/DDR3_init.obj" \
+"./inc/KeyStone_common.obj" \
 "../KeyStone_Test.cmd" \
 $(GEN_CMDS__FLAG) \
 -llibc.a \
@@ -27,7 +29,11 @@ RMDIR := RMDIR /S/Q
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include subdir_vars.mk
+-include inc/DDR3/subdir_vars.mk
+-include inc/subdir_vars.mk
 -include subdir_rules.mk
+-include inc/DDR3/subdir_rules.mk
+-include inc/subdir_rules.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -137,15 +143,15 @@ all: C6678_core_IPC_Interrupt.out
 C6678_core_IPC_Interrupt.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: C6000 Linker'
-	"D:/CCSv74/ccsv7/tools/compiler/ti-cgt-c6000_8.0.4/bin/cl6x" -mv6600 --abi=eabi -g --diag_wrap=off --display_error_number --diag_warning=225 -z -m"C6678_core_IPC_Interrupt.map" -i"D:/CCSv74/ccsv7/tools/compiler/ti-cgt-c6000_8.0.4/lib" -i"D:/CCSv74/ccsv7/tools/compiler/ti-cgt-c6000_8.0.4/include" --reread_libs --display_error_number --warn_sections --diag_wrap=off --xml_link_info="C6678_core_IPC_Interrupt_linkInfo.xml" --rom_model -o "C6678_core_IPC_Interrupt.out" $(ORDERED_OBJS)
+	"D:/CCSv74/ccsv7/tools/compiler/ti-cgt-c6000_8.0.4/bin/cl6x" -mv6600 --abi=eabi -g --diag_wrap=off --display_error_number --diag_warning=225 -z -m"C6678_core_IPC_Interrupt.map" -i"D:/CCSv74/ccsv7/tools/compiler/ti-cgt-c6000_8.0.4/lib" -i"D:/CCSv74/Workspace/C6678_core_IPC_Interrupt/inc" -i"D:/CCSv74/ccsv7/tools/compiler/ti-cgt-c6000_8.0.4/include" -i"C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/lib" --reread_libs --display_error_number --warn_sections --diag_wrap=off --xml_link_info="C6678_core_IPC_Interrupt_linkInfo.xml" --rom_model -o "C6678_core_IPC_Interrupt.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 
 # Other Targets
 clean:
 	-$(RM) $(EXE_OUTPUTS__QUOTED)
-	-$(RM) "bootload.obj" "ipc_interrupt.obj" "main.obj" 
-	-$(RM) "ipc_interrupt.d" "main.d" 
+	-$(RM) "bootload.obj" "ipc_interrupt.obj" "main.obj" "inc\DDR3\DDR3_init.obj" "inc\KeyStone_common.obj" 
+	-$(RM) "ipc_interrupt.d" "main.d" "inc\DDR3\DDR3_init.d" "inc\KeyStone_common.d" 
 	-$(RM) "bootload.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
