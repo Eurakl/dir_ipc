@@ -14,7 +14,9 @@ ORDERED_OBJS += \
 "./ipc_interrupt.obj" \
 "./main.obj" \
 "./inc/DDR3/DDR3_init.obj" \
+"./inc/DF/df_frame.obj" \
 "./inc/KeyStone_common.obj" \
+"./inc/SRIO/srio.obj" \
 "../KeyStone_Test.cmd" \
 $(GEN_CMDS__FLAG) \
 -llibc.a \
@@ -30,10 +32,14 @@ RMDIR := RMDIR /S/Q
 -include sources.mk
 -include subdir_vars.mk
 -include inc/DDR3/subdir_vars.mk
+-include inc/DF/subdir_vars.mk
 -include inc/subdir_vars.mk
+-include inc/SRIO/subdir_vars.mk
 -include subdir_rules.mk
 -include inc/DDR3/subdir_rules.mk
+-include inc/DF/subdir_rules.mk
 -include inc/subdir_rules.mk
+-include inc/SRIO/subdir_rules.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -150,8 +156,8 @@ C6678_core_IPC_Interrupt.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 # Other Targets
 clean:
 	-$(RM) $(EXE_OUTPUTS__QUOTED)
-	-$(RM) "bootload.obj" "ipc_interrupt.obj" "main.obj" "inc\DDR3\DDR3_init.obj" "inc\KeyStone_common.obj" 
-	-$(RM) "ipc_interrupt.d" "main.d" "inc\DDR3\DDR3_init.d" "inc\KeyStone_common.d" 
+	-$(RM) "bootload.obj" "ipc_interrupt.obj" "main.obj" "inc\DDR3\DDR3_init.obj" "inc\DF\df_frame.obj" "inc\KeyStone_common.obj" "inc\SRIO\srio.obj" 
+	-$(RM) "ipc_interrupt.d" "main.d" "inc\DDR3\DDR3_init.d" "inc\DF\df_frame.d" "inc\KeyStone_common.d" "inc\SRIO\srio.d" 
 	-$(RM) "bootload.d" 
 	-@echo 'Finished clean'
 	-@echo ' '

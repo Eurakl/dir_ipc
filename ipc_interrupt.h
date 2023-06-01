@@ -20,6 +20,8 @@
 #include <ti/csl/csl_tsc.h>
 #include "inc/KeyStone_common.h"
 #include "inc/DDR3/DDR3_init.h"
+#include "inc/SRIO/srio.h"
+#include "inc/DF/df_frame.h"
 #include <ti/csl/csl_xmc.h>
 #include <ti/csl/csl_xmcAux.h>
 
@@ -77,6 +79,14 @@ extern volatile unsigned int far Flag;
 extern volatile IPC_PKT_TEST far Pkt_Test;
 extern volatile unsigned int far DDR_Test;
 
+//#define TransData               (unsigned int*)(0x10830000)
+//#define FPGAData               (unsigned int*)(0x00120000)
+//#define ReadBackData               (unsigned int*)(0x10850000)
+extern unsigned int *TransData;
+extern unsigned int *FPGAData;
+extern unsigned int *ReadBackData;
+
+
 int32_t intcInit();
 int32_t registerInterrupt();
 void IssueInterruptToNextCore(uint32_t destCoreID, uint32_t interruptInfo);
@@ -84,5 +94,5 @@ void IPC_ISR();
 void Test_DDR(unsigned int coreid,unsigned int value,unsigned int modify_DDR);
 void Test_MSMC(unsigned int CoreNum,uint32_t interruptInfo);
 void Init_Core0();
-
+void Test_SRIO_FIN();
 #endif /* IPC_INTERRUPT_H_ */

@@ -108,5 +108,7 @@ PDE_DEPS__QUOTED :=
 SUBDIRS := \
 . \
 inc/DDR3 \
+inc/DF \
 inc \
+inc/SRIO \
 

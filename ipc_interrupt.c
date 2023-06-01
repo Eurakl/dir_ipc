@@ -103,7 +103,7 @@ int32_t registerInterrupt()
 
             if (MAX_CORE_VECTOR <= coreVector[core])
             {
-                printf("Core %d Vector Number Exceed\n");
+                printf("Core %d Vector Number Exceed\n",coreID);
             }
 
             hintc[vector] = CSL_intcOpen (&intcObj[vector], event, (CSL_IntcParam*)&vector , NULL);
@@ -290,6 +290,45 @@ void Init_Core0()
     CACHE_wbInvL2((void *)&Pkt_Test, sizeof(Pkt_Test), CACHE_WAIT);
     IssueInterruptToNextCore(1,IPC_INFO0_SUF);
 }
+
+void Test_SRIO_FIN()
+{
+    int i;
+    int N=256;
+    //clear buffer
+    for(i = 0; i < N; i++)
+    {
+       TransData[i] = 0;
+       ReadBackData[i] = 0;
+    }
+    nop_delay(10000000);
+    //init fin
+    frame_send_block.frame_type=3;
+    frame_send_block.fin_part.SubnetID=1;
+    frame_send_block.fin_part.src=5;
+    frame_send_block.fin_part.finish=1;
+    for(i=0;i<8;i++)
+    {
+        frame_send_block.fin_part.ant_index[4*i]=0;
+        frame_send_block.fin_part.ant_index[4*i+1]=1;
+        frame_send_block.fin_part.ant_index[4*i+2]=2;
+        frame_send_block.fin_part.ant_index[4*i+3]=3;
+    }
+    for(i=0;i<31;i++)
+    {
+        frame_send_block.fin_part.dir_online_node[i]=1;
+    }
+    CACHE_wbInvL2((void *)&frame_send_block, sizeof(frame_send_block), CACHE_WAIT);
+    framing_FIN(TransData);
+    nop_delay(1000000);
+    send_CSL(0, (unsigned int)TransData, (unsigned int)FPGAData, 4*N, FPGA_ID,0);
+    nop_delay(1000000);
+    read_CSL(0, (unsigned int)ReadBackData, (unsigned int)FPGAData, 4*N, FPGA_ID,0);
+    resolve_FIN(ReadBackData);
+    CACHE_wbInvL2((void *)&frame_recv_block, sizeof(frame_recv_block), CACHE_WAIT);
+    nop_delay(1000000);
+}
+
 
 
 

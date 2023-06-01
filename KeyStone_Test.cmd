@@ -33,6 +33,8 @@ SECTIONS
     .sysmem  > LL2
     .IPC 			>	 0xc200000    START(Flag)
     .IPC 			>	 0xc200004    START(Pkt_Test)
+    .IPC			>    0xc200008	  START(frame_send_block)
+    .IPC			>    0xc300000	  START(frame_recv_block)
     .IPC 			>	 0x80000000   START(DDR_Test)
 }
 

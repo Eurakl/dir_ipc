@@ -59,6 +59,13 @@ main.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_gpio.h
 main.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_emif4f.h
 main.obj: D:/CCSv74/ccsv7/tools/compiler/ti-cgt-c6000_8.0.4/include/stdio.h
 main.obj: ../inc/DDR3/DDR3_init.h
+main.obj: ../inc/SRIO/srio.h
+main.obj: D:/CCSv74/ccsv7/tools/compiler/ti-cgt-c6000_8.0.4/include/stdio.h
+main.obj: D:/CCSv74/ccsv7/tools/compiler/ti-cgt-c6000_8.0.4/include/stdio.h
+main.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_chipAux.h
+main.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_srio.h
+main.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_srioAux.h
+main.obj: ../inc/DF/df_frame.h
 
 ../main.c: 
 D:/CCSv74/ccsv7/tools/compiler/ti-cgt-c6000_8.0.4/include/c6x.h: 
@@ -119,3 +126,10 @@ C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_gpio.h:
 C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_emif4f.h: 
 D:/CCSv74/ccsv7/tools/compiler/ti-cgt-c6000_8.0.4/include/stdio.h: 
 ../inc/DDR3/DDR3_init.h: 
+../inc/SRIO/srio.h: 
+D:/CCSv74/ccsv7/tools/compiler/ti-cgt-c6000_8.0.4/include/stdio.h: 
+D:/CCSv74/ccsv7/tools/compiler/ti-cgt-c6000_8.0.4/include/stdio.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_chipAux.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_srio.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_srioAux.h: 
+../inc/DF/df_frame.h: 

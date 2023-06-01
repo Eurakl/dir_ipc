@@ -54,6 +54,13 @@ ipc_interrupt.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_gpio.h
 ipc_interrupt.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_emif4f.h
 ipc_interrupt.obj: D:/CCSv74/ccsv7/tools/compiler/ti-cgt-c6000_8.0.4/include/stdio.h
 ipc_interrupt.obj: .././inc/DDR3/DDR3_init.h
+ipc_interrupt.obj: .././inc/SRIO/srio.h
+ipc_interrupt.obj: D:/CCSv74/ccsv7/tools/compiler/ti-cgt-c6000_8.0.4/include/stdio.h
+ipc_interrupt.obj: D:/CCSv74/ccsv7/tools/compiler/ti-cgt-c6000_8.0.4/include/stdio.h
+ipc_interrupt.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_chipAux.h
+ipc_interrupt.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_srio.h
+ipc_interrupt.obj: C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_srioAux.h
+ipc_interrupt.obj: .././inc/DF/df_frame.h
 
 ../ipc_interrupt.c: 
 .././ipc_interrupt.h: 
@@ -109,3 +116,10 @@ C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_gpio.h:
 C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/cslr_emif4f.h: 
 D:/CCSv74/ccsv7/tools/compiler/ti-cgt-c6000_8.0.4/include/stdio.h: 
 .././inc/DDR3/DDR3_init.h: 
+.././inc/SRIO/srio.h: 
+D:/CCSv74/ccsv7/tools/compiler/ti-cgt-c6000_8.0.4/include/stdio.h: 
+D:/CCSv74/ccsv7/tools/compiler/ti-cgt-c6000_8.0.4/include/stdio.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_chipAux.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_srio.h: 
+C:/ti/pdk_C6678_1_1_2_6/packages/ti/csl/csl_srioAux.h: 
+.././inc/DF/df_frame.h: 
